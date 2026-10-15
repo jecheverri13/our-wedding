@@ -20,10 +20,19 @@ export default function HeaderHero({ onScrollToSection }) {
       <div className="editorial-hero-inner">
         {/* Frase poética superior delicada */}
         <span className="editorial-intro-script font-script">
-          Una invitación para ti
+          Nos Casamos
         </span>
-
-        {/* Monograma en serifa / script */}
+        {/* Foto artística del lugar con marco sutil de papel */}
+        <div className="event-venue-photo-wrap">
+          <div className="event-venue-frame">
+            <img
+              src="/images/anillo-abrazo.jpg"
+              alt="Anillo abrazo"
+              className="event-venue-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
 
 
         {/* Nombres con respiro amplio */}
