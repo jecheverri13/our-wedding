@@ -1,0 +1,1520 @@
+/* ========================================================
+   WEDDING INVITATION - EDITORIAL LUXURY MOBILE FIRST
+   Junior & Kathe • 06.03.2027
+   ======================================================== */
+
+:root {
+  --env-w: min(320px, calc(100vw - 32px));
+  --env-h: calc(var(--env-w) * 0.64);
+}
+
+/* Base Reset & Mobile Canvas */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  background-color: #FAF6F0;
+}
+
+.wedding-app-root {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.w-full-mobile {
+  width: 100% !important;
+}
+
+@media (min-width: 600px) {
+  .w-full-mobile {
+    width: auto !important;
+  }
+}
+
+/* ========================================================
+   1. FULLSCREEN INTERACTIVE ENVELOPE
+   ======================================================== */
+
+.envelope-fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F9F2E8 55%, #EFE2D0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1.5rem 1rem;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.envelope-fullscreen-overlay.fade-out-screen {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+.envelope-ambient-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.18;
+}
+
+.glow-1 {
+  width: 260px;
+  height: 260px;
+  background: #DE8262;
+  top: 10%;
+  left: 10%;
+}
+
+.glow-2 {
+  width: 280px;
+  height: 280px;
+  background: #C5A059;
+  bottom: 10%;
+  right: 10%;
+}
+
+.envelope-wrapper {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+.envelope-header-text {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: var(--color-terracotta-dark);
+}
+
+.envelope-pre-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: #B25332;
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.envelope-couple {
+  font-size: clamp(2.4rem, 7.5vw, 3.4rem);
+  font-weight: 400;
+  color: #4A1E0D;
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(178, 83, 50, 0.12);
+}
+
+.envelope-date-hint {
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: #8A4F36;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+/* El Sobre Responsivo sobre fondo crema */
+.wedding-envelope-mobile {
+  position: relative;
+  width: var(--env-w);
+  height: var(--env-h);
+  background: #873618;
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(90, 36, 14, 0.28), 0 8px 24px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  perspective: 1000px;
+  touch-action: manipulation;
+  transition: transform 0.3s ease;
+}
+
+.wedding-envelope-mobile:active {
+  transform: scale(0.98);
+}
+
+.env-liner-bg {
+  position: absolute;
+  inset: 0;
+  background: #FAF7F2;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.env-liner-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#D8754F 1px, transparent 1px);
+  background-size: 14px 14px;
+  opacity: 0.15;
+}
+
+.env-letter-card {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  background: #FFFFFF;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.wedding-envelope-mobile.envelope-is-open .env-letter-card {
+  transform: translateY(-60px) scale(1.04);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+  z-index: 8;
+}
+
+.env-letter-content {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.env-letter-monogram {
+  font-size: 1.8rem;
+  color: var(--color-terracotta);
+  line-height: 1;
+  display: block;
+}
+
+.env-letter-title {
+  font-size: 1.05rem;
+  color: var(--color-terracotta-dark);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.env-letter-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 0.4rem auto 0;
+}
+
+.env-flap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56%;
+  background: #963F20;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  z-index: 5;
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+  pointer-events: none;
+}
+
+.wedding-envelope-mobile.envelope-is-open .env-flap-top {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.env-pocket-left {
+  position: absolute;
+  inset: 0;
+  background: #873618;
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.env-pocket-right {
+  position: absolute;
+  inset: 0;
+  background: #873618;
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.env-pocket-bottom {
+  position: absolute;
+  inset: 0;
+  background: #762D13;
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.env-wax-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #C96645 0%, #873215 70%, #521D0A 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 2px 3px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.4s ease;
+  animation: pulseGlow 2.5s infinite;
+}
+
+.env-wax-seal.seal-broken {
+  transform: translate(-50%, -50%) scale(1.3);
+  opacity: 0;
+}
+
+.wax-seal-relief {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 255, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.seal-text {
+  font-size: 0.95rem;
+  color: #FFF2EC;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.seal-mini-heart {
+  font-size: 0.6rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.envelope-cta-wrap {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-open-touch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+  color: #FFFFFF;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 24px rgba(178, 83, 50, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  touch-action: manipulation;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-open-touch:active {
+  transform: scale(0.96);
+  filter: brightness(0.95);
+}
+
+/* ========================================================
+   2. TOP BAR & CONTENT WRAPPER
+   ======================================================== */
+
+.wedding-content-wrapper {
+  width: 100%;
+}
+
+.content-hidden {
+  display: none;
+}
+
+.content-visible {
+  display: block;
+  animation: fadeIn 1s ease-out;
+}
+
+.top-navigation-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 246, 240, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(222, 130, 98, 0.2);
+  padding: 0.6rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-nav-monogram {
+  font-size: 1.6rem;
+  color: var(--color-terracotta-dark);
+}
+
+.top-nav-envelope-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-terracotta-soft);
+  color: var(--color-terracotta-dark);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(222, 130, 98, 0.3);
+}
+
+/* ========================================================
+   3. EDITORIAL HERO - PORTADA ESPACIOSA Y ELEGANTE
+   ======================================================== */
+
+.editorial-hero-section {
+  min-height: 85svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem 4rem;
+  background: radial-gradient(circle at 50% 25%, #FFFDFB 0%, #FAF5EE 60%, #F5ECE2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-editorial-reopen {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color-terracotta-light);
+  color: var(--color-terracotta-dark);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(122, 51, 25, 0.08);
+}
+
+.editorial-hero-content {
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editorial-monogram {
+  font-size: 4rem;
+  color: var(--color-terracotta);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 8px rgba(178, 83, 50, 0.12);
+}
+
+.editorial-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--color-terracotta);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.editorial-couple-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1.5rem;
+}
+
+.editorial-name-first,
+.editorial-name-second {
+  font-size: clamp(3rem, 11vw, 4.4rem);
+  font-weight: 400;
+  color: var(--color-terracotta-dark);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+.editorial-ampersand {
+  font-size: 2.8rem;
+  color: var(--color-terracotta-light);
+  line-height: 0.75;
+  margin: 0.2rem 0;
+}
+
+.editorial-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+  width: 100%;
+}
+
+.editorial-line {
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.7;
+}
+
+.editorial-symbol {
+  color: var(--color-gold);
+  font-size: 0.85rem;
+}
+
+.editorial-details-block {
+  margin-bottom: 2.8rem;
+}
+
+.editorial-date {
+  font-size: 1.45rem;
+  color: var(--color-terracotta-dark);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.editorial-venue {
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.editorial-cta-wrap {
+  width: 100%;
+}
+
+.btn-editorial-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+  color: #FFFFFF;
+  padding: 1rem 2.2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 24px rgba(178, 83, 50, 0.28);
+  width: 100%;
+  max-width: 320px;
+  touch-action: manipulation;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-editorial-primary:active {
+  transform: scale(0.98);
+}
+
+.cta-chevron-anim {
+  animation: floatSlow 2s ease-in-out infinite;
+}
+
+/* ========================================================
+   4. TARJETAS AMPLIAS Y AIREADAS (SECCIONES GENERALES)
+   ======================================================== */
+
+.canva-card-envelope-inner {
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(122, 51, 25, 0.06);
+  padding: 2.5rem 1.4rem;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  border: 1px solid rgba(222, 130, 98, 0.2);
+}
+
+@media (min-width: 600px) {
+  .canva-card-envelope-inner {
+    padding: 3.5rem 2.5rem;
+    border-radius: 28px;
+  }
+}
+
+.canva-card-border {
+  border: none;
+  outline: none;
+  padding: 0;
+  text-align: center;
+}
+
+.canva-card-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--color-terracotta);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.canva-headline {
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  color: var(--color-terracotta-dark);
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+}
+
+.canva-divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1rem 0 1.2rem;
+}
+
+.ornament-line {
+  width: 50px;
+  height: 1px;
+  background: var(--color-terracotta-light);
+  opacity: 0.45;
+}
+
+.canva-sub-quote {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto 2.2rem;
+  line-height: 1.55;
+}
+
+/* ========================================================
+   5. DÍPTICO DE NIÑOS («Estos niños se casan»)
+   ======================================================== */
+
+.childhood-canva-section {
+  background-color: #FAF6F0;
+  padding: 4rem 1rem;
+}
+
+.canva-kids-duo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  max-width: 460px;
+  margin: 1.8rem auto;
+}
+
+@media (min-width: 500px) {
+  .canva-kids-duo-grid {
+    gap: 1.8rem;
+  }
+}
+
+.kid-arch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arch-frame {
+  width: 100%;
+  max-width: 175px;
+  height: 235px;
+  background: #FFFFFF;
+  border-radius: 90px 90px 14px 14px;
+  padding: 5px;
+  box-shadow: 0 8px 24px rgba(43, 33, 30, 0.12);
+  border: 1.5px solid var(--color-gold);
+}
+
+@media (min-width: 600px) {
+  .arch-frame {
+    max-width: 210px;
+    height: 290px;
+    border-radius: 105px 105px 16px 16px;
+    padding: 6px;
+  }
+}
+
+.arch-inner-border {
+  width: 100%;
+  height: 100%;
+  border-radius: 85px 85px 10px 10px;
+  overflow: hidden;
+  background-color: var(--color-sand);
+}
+
+.arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kid-label {
+  margin-top: 0.9rem;
+  text-align: center;
+}
+
+.kid-name {
+  font-size: 2.2rem;
+  color: var(--color-terracotta-dark);
+  line-height: 1;
+  display: block;
+}
+
+.kid-role {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--color-terracotta);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.kids-center-connector {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.connector-circle-pulse {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(122, 51, 25, 0.22);
+  animation: pulseGlow 2.5s infinite;
+}
+
+.canva-story-transition {
+  max-width: 520px;
+  margin: 2.2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--color-terracotta-light);
+}
+
+.transition-text {
+  font-size: 1.15rem;
+  color: var(--color-text-primary);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ========================================================
+   6. COUPLE STORY & BIBLE VERSE
+   ======================================================== */
+
+.couple-story-canva-section {
+  background-color: #F4EBE2;
+  padding: 4rem 1rem;
+}
+
+.verse-canva-wrap {
+  margin-bottom: 3rem;
+}
+
+.verse-canva-text {
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  color: var(--color-terracotta-dark);
+  font-style: italic;
+  line-height: 1.45;
+  max-width: 560px;
+  margin: 0 auto 0.8rem;
+}
+
+.verse-canva-ref {
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  color: var(--color-terracotta);
+  font-weight: 700;
+  display: block;
+}
+
+.couple-story-lead {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  max-width: 520px;
+  margin: 1.4rem auto 0;
+  line-height: 1.55;
+}
+
+.adult-moments-canva-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .adult-moments-canva-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.adult-photo-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(222, 130, 98, 0.2);
+  text-align: center;
+}
+
+.adult-arch-wrapper {
+  width: 100%;
+  height: 330px;
+  border-radius: 120px 120px 12px 12px;
+  overflow: hidden;
+  border: 1.5px solid var(--color-gold);
+}
+
+@media (min-width: 640px) {
+  .adult-arch-wrapper {
+    height: 360px;
+  }
+}
+
+.adult-arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adult-photo-caption {
+  padding-top: 1.2rem;
+}
+
+.adult-caption-title {
+  font-size: 1.35rem;
+  color: var(--color-terracotta-dark);
+  margin-bottom: 0.25rem;
+}
+
+.adult-caption-text {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* ========================================================
+   7. COUNTDOWN SECTION
+   ======================================================== */
+
+.countdown-canva-section {
+  background-color: #FAF6F0;
+  padding: 4rem 1rem;
+}
+
+.countdown-title {
+  font-size: clamp(2rem, 5.5vw, 2.6rem);
+  color: var(--color-terracotta-dark);
+}
+
+.countdown-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0.5rem 0 2rem;
+}
+
+.countdown-mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  max-width: 480px;
+  margin: 0 auto 2.2rem;
+}
+
+.countdown-mobile-box {
+  background: #FAF6F0;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 14px;
+  padding: 1.3rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-mobile-box.highlight-box {
+  background: var(--color-terracotta-soft);
+  border-color: var(--color-terracotta);
+}
+
+.countdown-mobile-box .countdown-val {
+  font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+  color: var(--color-terracotta-dark);
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.countdown-mobile-box .countdown-unit {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: var(--color-text-secondary);
+  font-weight: 700;
+}
+
+.countdown-buttons-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .countdown-buttons-row {
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ========================================================
+   8. EVENT DETAILS & TIMELINE
+   ======================================================== */
+
+.event-details-section {
+  background-color: #FAF6F0;
+  padding: 4rem 1rem;
+}
+
+.canva-event-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .canva-event-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.event-icon-circle-canva {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-terracotta-soft);
+  color: var(--color-terracotta-dark);
+  border: 1.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+}
+
+.event-venue-title {
+  font-size: 2.1rem;
+  color: var(--color-terracotta-dark);
+  margin-bottom: 0.25rem;
+}
+
+.event-venue-subtitle {
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+
+.event-badges-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.canva-info-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FAF6F0;
+  border: 1px solid var(--color-terracotta-soft);
+  color: var(--color-terracotta-dark);
+  padding: 0.4rem 1.2rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.event-description-text {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.event-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.itinerary-heading {
+  font-size: 1.9rem;
+  color: var(--color-terracotta-dark);
+  margin-bottom: 1.8rem;
+}
+
+.canva-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  text-align: left;
+}
+
+.timeline-canva-item {
+  display: grid;
+  grid-template-columns: 72px 20px 1fr;
+  align-items: start;
+  gap: 0.9rem;
+}
+
+.timeline-canva-time {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-terracotta);
+  text-align: right;
+  padding-top: 2px;
+}
+
+.timeline-canva-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-terracotta);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 0 2px var(--color-gold);
+  margin-top: 4px;
+}
+
+.timeline-canva-title {
+  font-size: 1.1rem;
+  color: var(--color-terracotta-dark);
+  margin-bottom: 0.2rem;
+}
+
+.timeline-canva-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* ========================================================
+   9. DRESS CODE & COLORES
+   ======================================================== */
+
+.dresscode-canva-section {
+  background-color: #F4EBE2;
+  padding: 4rem 1rem;
+}
+
+.dresscode-title {
+  font-size: 2.1rem;
+  color: var(--color-terracotta-dark);
+}
+
+.dresscode-lead {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.8rem;
+}
+
+.dresscode-guidelines-canva {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: #FAF6F0;
+  border: 1px solid var(--color-sand-dark);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2.2rem;
+}
+
+@media (min-width: 600px) {
+  .dresscode-guidelines-canva {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+  .guide-line {
+    width: 1px !important;
+    height: 50px !important;
+  }
+}
+
+.guide-box {
+  flex: 1;
+}
+
+.guide-role {
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  color: var(--color-terracotta);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.guide-desc {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+
+.guide-line {
+  width: 50px;
+  height: 1px;
+  background: var(--color-sand-dark);
+  margin: 0 auto;
+}
+
+.reserved-canva-box {
+  background: linear-gradient(135deg, #FFF9F6 0%, var(--color-terracotta-soft) 100%);
+  border: 1.5px solid var(--color-terracotta);
+  border-radius: 18px;
+  padding: 1.8rem 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.reserved-badge {
+  background: var(--color-terracotta-dark);
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  padding: 0.25rem 0.85rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.reserved-title {
+  font-size: 1.5rem;
+  color: var(--color-terracotta-dark);
+  margin-bottom: 0.5rem;
+}
+
+.reserved-text {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  line-height: 1.55;
+  margin-bottom: 1.4rem;
+}
+
+.swatches-canva-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.swatches-canva-title {
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.swatches-canva-flex {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.swatch-canva-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.swatch-circle-canva {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.swatch-circle-canva.border-light {
+  border: 2px solid var(--color-sand-dark);
+}
+
+.swatch-cross {
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.border-light .swatch-cross {
+  color: #D32F2F;
+}
+
+.swatch-pill-label {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.suggested-canva-box {
+  background: #FAF6F0;
+  padding: 1.4rem 1rem;
+  border-radius: 16px;
+  border: 1px dashed var(--color-gold);
+}
+
+.suggested-circle-canva {
+  width: 34px;
+  height: 34px;
+}
+
+/* ========================================================
+   10. GIFTS & RSVP
+   ======================================================== */
+
+.gifts-canva-section {
+  background-color: #FAF6F0;
+  padding: 4rem 1rem;
+}
+
+.gifts-stamp-badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-terracotta-soft);
+  color: var(--color-terracotta-dark);
+  border: 1.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.gifts-title {
+  font-size: 2.3rem;
+  color: var(--color-terracotta-dark);
+}
+
+.gifts-quote {
+  font-size: 1.2rem;
+  color: var(--color-terracotta-dark);
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.55;
+}
+
+.gifts-envelope-box {
+  background: #FAF6F0;
+  border: 1.5px dashed var(--color-terracotta);
+  border-radius: 18px;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .gifts-envelope-box {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.envelope-icon-emoji {
+  font-size: 2.2rem;
+}
+
+.envelope-box-text {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  line-height: 1.55;
+}
+
+/* RSVP Form */
+.rsvp-canva-section {
+  background-color: #F4EBE2;
+  padding: 4rem 1rem;
+}
+
+.rsvp-card-heading {
+  font-size: 2.1rem;
+  color: var(--color-terracotta-dark);
+}
+
+.rsvp-card-lead {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.8rem;
+}
+
+.canva-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  text-align: left;
+}
+
+.canva-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.canva-field-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--color-terracotta-dark);
+}
+
+.canva-input,
+.canva-select,
+.canva-textarea {
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-sand-dark);
+  background: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+  transition: var(--transition-smooth);
+}
+
+.canva-input:focus,
+.canva-select:focus,
+.canva-textarea:focus {
+  outline: none;
+  border-color: var(--color-terracotta);
+  box-shadow: 0 0 0 3px var(--color-terracotta-glow);
+}
+
+.canva-radio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+@media (min-width: 500px) {
+  .canva-radio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.canva-radio-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.canva-radio-card input {
+  position: absolute;
+  opacity: 0;
+}
+
+.canva-radio-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem;
+  background: #FAF6F0;
+  border: 1.5px solid var(--color-sand-dark);
+  border-radius: 12px;
+  transition: var(--transition-smooth);
+}
+
+.canva-radio-card.selected .canva-radio-body {
+  border-color: var(--color-terracotta);
+  background: var(--color-terracotta-soft);
+  box-shadow: 0 4px 12px var(--color-terracotta-glow);
+}
+
+.canva-radio-text {
+  font-size: 1rem;
+  color: var(--color-terracotta-dark);
+  font-weight: 600;
+}
+
+.canva-submit-wrap {
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-whatsapp-canva {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #25D366;
+  color: #FFFFFF;
+  padding: 1.05rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  width: 100%;
+}
+
+.btn-whatsapp-canva:active {
+  transform: scale(0.98);
+}
+
+.canva-whatsapp-help {
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+}
+
+.canva-success-box {
+  margin-top: 1.4rem;
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #2E7D32;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+}
+
+/* ========================================================
+   11. AUDIO & FOOTER
+   ======================================================== */
+
+.audio-floating-wrap {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 90;
+}
+
+.audio-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--color-gold);
+  color: var(--color-terracotta-dark);
+  padding: 0.55rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(122, 51, 25, 0.2);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.audio-toggle-btn.playing {
+  background: var(--color-terracotta);
+  color: #FFFFFF;
+  border-color: var(--color-terracotta-dark);
+}
+
+.footer-section {
+  background-color: #23120B;
+  color: #FFFFFF;
+  padding: 4rem 1.2rem 3rem;
+  text-align: center;
+}
+
+.footer-monogram {
+  font-size: 3.2rem;
+  color: var(--color-terracotta-light);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.footer-names {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+
+.footer-date {
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-terracotta-soft);
+  margin-bottom: 1.4rem;
+}
+
+.footer-thanks {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 440px;
+  margin: 0 auto 2.2rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.btn-scroll-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-terracotta-soft);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(222, 130, 98, 0.3);
+}

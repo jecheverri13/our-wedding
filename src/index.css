@@ -1,0 +1,280 @@
+/* ========================================================
+   WEDDING DESIGN SYSTEM - JUNIOR & KATHE
+   Palette: Terracotta, Warm Sand, Cream & Soft Gold
+   ======================================================== */
+
+:root {
+  /* Colors - Terracotta, Sand, Warm Linen & Artisan Paper */
+  --color-terracotta-dark: #6D2D16;
+  --color-terracotta: #A84C2D;
+  --color-terracotta-medium: #BF5E3D;
+  --color-terracotta-light: #D87A5B;
+  --color-terracotta-soft: #F5E5DC;
+  --color-terracotta-bg: #FAF5F0;
+  --color-terracotta-glow: rgba(168, 76, 45, 0.15);
+
+  --color-paper-base: #FAF7F2;
+  --color-paper-light: #FFFDF9;
+  --color-paper-warm: #F4EFE6;
+  --color-paper-border: rgba(184, 150, 120, 0.22);
+  --color-sand: #EFE7DA;
+  --color-sand-dark: #D4C3AE;
+
+  --color-gold: #B89047;
+  --color-gold-light: #E8D9B5;
+  --color-gold-glow: rgba(184, 144, 71, 0.2);
+
+  --color-text-primary: #2C221E;
+  --color-text-secondary: #5C4B43;
+  --color-text-light: #8C7A72;
+  --color-text-muted: #A3938B;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-script: 'Alex Brush', cursive;
+
+  /* Shadows - Artisan, subtle and soft */
+  --shadow-paper: 0 10px 40px rgba(74, 45, 30, 0.08), 0 2px 10px rgba(74, 45, 30, 0.04);
+  --shadow-photo: 0 12px 32px rgba(60, 36, 24, 0.12), 0 3px 8px rgba(60, 36, 24, 0.06);
+  --shadow-hover: 0 18px 45px rgba(109, 45, 22, 0.16);
+
+  /* Transitions */
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-paper-warm);
+  color: var(--color-text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-paper-warm);
+  /* Textura procedural de papel artesanal con grano */
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(255, 253, 249, 0.8) 0%, rgba(244, 239, 230, 0.95) 70%, rgba(235, 226, 214, 1) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: var(--transition-smooth);
+}
+
+/* Typography Utilities */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Layout Sheet - Centered artisan stationery folio like in the reel */
+.wedding-paper-sheet {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  background-color: var(--color-paper-base);
+  /* Textura de papel fino de algodón */
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, #FFFDF9 0%, #FAF6EE 55%, #F4ECE0 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  box-shadow: 0 0 70px rgba(74, 45, 30, 0.08), 0 10px 40px rgba(74, 45, 30, 0.06);
+  border-left: 1px solid rgba(220, 200, 180, 0.35);
+  border-right: 1px solid rgba(220, 200, 180, 0.35);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .wedding-paper-sheet {
+    box-shadow: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+/* Container */
+.container {
+  width: 100%;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+/* Flujo editorial ligero - Sin cortes duros ni cajas pesadas */
+.editorial-flow-section {
+  padding: 3.5rem 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .editorial-flow-section {
+    padding: 2.8rem 1.25rem;
+  }
+}
+
+/* Divisores botánicos y líneas ultra sutiles */
+.flow-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 2.5rem auto;
+  opacity: 0.7;
+}
+
+.flow-divider::before,
+.flow-divider::after {
+  content: '';
+  height: 1px;
+  width: 45px;
+  background: linear-gradient(90deg, transparent, var(--color-terracotta-light), transparent);
+}
+
+.flow-divider-symbol {
+  color: var(--color-terracotta);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+  color: var(--color-white);
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 6px 20px var(--color-terracotta-glow);
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(122, 51, 25, 0.3);
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: transparent;
+  color: var(--color-terracotta-dark);
+  border: 1.5px solid var(--color-terracotta);
+  padding: 0.85rem 1.8rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-terracotta-soft);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #25D366;
+  color: #FFFFFF;
+  padding: 1rem 2.2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.btn-whatsapp:hover {
+  background: #20BD5A;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+}
+
+/* Cards & Surfaces */
+.wedding-card {
+  background: var(--color-white);
+  border-radius: 20px;
+  border: 1px solid rgba(222, 130, 98, 0.2);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem;
+  transition: var(--transition-smooth);
+}
+
+.wedding-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.03); opacity: 1; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
