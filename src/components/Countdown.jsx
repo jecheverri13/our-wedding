@@ -40,7 +40,7 @@ export default function Countdown() {
     const details = encodeURIComponent("¡Acompáñanos a celebrar nuestra unión matrimonial! Finca El Refugio, La Francia, Manizales.");
     const location = encodeURIComponent("Finca El Refugio, La Francia, Manizales, Caldas, Colombia");
     const dates = "20270306T210000Z/20270307T070000Z";
-    
+
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
     window.open(url, '_blank');
   };
@@ -48,8 +48,17 @@ export default function Countdown() {
   return (
     <section className="editorial-flow-section countdown-flow">
       <div className="flow-header">
-        <span className="flow-eyebrow font-sans">CUENTA REGRESIVA</span>
-        <h2 className="countdown-heading font-serif">Nos vemos en...</h2>
+        <span className="flow-eyebrow font-sans">Guarda la fecha</span>
+        <br />
+        <p className="countdown-heading font-serif">
+          Sábado 6 de Marzo de 2027
+        </p>
+        <p className="countdown-heading font-serif">
+          4:00 p.m.
+        </p>
+
+        <br />
+        <h2 className="event-date-highlight font-serif">Cada vez falta menos...</h2>
       </div>
 
       {/* Números etéreos flotando sobre la textura de papel */}

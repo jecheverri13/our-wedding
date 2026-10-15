@@ -65,12 +65,12 @@ export default function App() {
             onScrollToSection={scrollToSection}
           />
 
+          {/* 2. Nuestra Promesa: Versículo & Amor */}
+          <CoupleMoments />
 
-          {/* 2. Nuestra Historia: De Niños a Hoy */}
+          {/* 3. Un sueño que inició en el corazón de dos pequeños */}
           <ChildhoodSection />
 
-          {/* 3. Nuestra Promesa: Versículo & Amor */}
-          <CoupleMoments />
 
           {/* 4. Cuenta Regresiva */}
           <Countdown />

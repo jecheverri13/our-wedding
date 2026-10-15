@@ -22,18 +22,18 @@ export default function HeaderHero({ onScrollToSection }) {
         <span className="editorial-intro-script font-script">
           Nos Casamos
         </span>
-        {/* Foto artística del lugar con marco sutil de papel */}
-        <div className="event-venue-photo-wrap">
-          <div className="event-venue-frame">
+
+        {/* Foto de portada con marco en arco sutil estilo papel rasgado */}
+        <div className="hero-arch-photo-wrap">
+          <div className="hero-arch-frame">
             <img
               src="/images/anillo-abrazo.jpg"
-              alt="Anillo abrazo"
-              className="event-venue-img"
+              alt="Junior y Kathe - Anillo abrazo"
+              className="hero-arch-img"
               loading="lazy"
             />
           </div>
         </div>
-
 
         {/* Nombres con respiro amplio */}
         <div className="editorial-names-wrap">
@@ -44,21 +44,14 @@ export default function HeaderHero({ onScrollToSection }) {
 
         {/* Detalle de fecha y ciudad */}
         <div className="editorial-meta-line">
-          <span className="meta-date font-serif">Sábado, 6 de Marzo de 2027</span>
-          <span className="meta-separator">•</span>
-          <span className="meta-place font-sans">MANIZALES, COLOMBIA</span>
+          <span className="meta-date font-serif">06 / Marzo / 2027</span>
         </div>
-
-        {/* Frase poética ligera (del reel) */}
-        <p className="hero-poetic-quote font-serif">
-          «Las mejores historias se celebran juntos. Te esperamos.»
-        </p>
 
         {/* Flecha sutil para invitar a continuar */}
         <div className="hero-scroll-cue">
           <button
             type="button"
-            onClick={() => onScrollToSection('historia')}
+            onClick={() => onScrollToSection('promesa')}
             className="scroll-cue-btn"
             aria-label="Continuar leyendo"
           >

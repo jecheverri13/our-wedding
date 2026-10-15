@@ -4,10 +4,7 @@ export default function ChildhoodSection() {
   return (
     <section id="historia" className="editorial-flow-section childhood-flow">
       <div className="flow-header">
-        <span className="flow-eyebrow font-sans">NUESTRAS RAÍCES</span>
-        <h2 className="flow-heading font-serif">
-          «Primero fuimos dos niños llenos de risas y sueños...»
-        </h2>
+        <span className="flow-eyebrow font-sans">UN SUEÑO QUE INICIÓ EN EL CORAZÓN DE DOS PEQUEÑOS</span>
       </div>
 
       {/* Díptico fotográfico estilo fotos impresas sobre papel */}
@@ -45,7 +42,11 @@ export default function ChildhoodSection() {
       </div>
 
       <p className="flow-transition-text font-serif">
-        ...y en el tiempo perfecto, Dios preparó nuestros caminos para unirse para siempre.
+        ... y hoy con la bendición de Dios y el amor de nuestras familias queremos dar el Sí rodeados de quienes más queremos.
+      </p>
+
+      <p className="flow-transition-text font-serif">
+        Nos hará muy felices que nos acompañes en este momento tan especial
       </p>
 
       <div className="flow-divider">

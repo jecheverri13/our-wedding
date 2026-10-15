@@ -16,29 +16,11 @@ export default function EventDetails() {
     <section id="lugar" className="editorial-flow-section event-flow">
       <div className="flow-header">
         <span className="flow-eyebrow font-sans">CEREMONIA Y RECEPCIÓN</span>
-        <h2 className="event-venue-heading font-serif">Finca El Refugio</h2>
-        <p className="event-poetic-quote font-serif">
-          «Un rincón rodeado de naturaleza y toda nuestra gente.»
-        </p>
-      </div>
-
-      {/* Foto artística del lugar con marco sutil de papel */}
-      <div className="event-venue-photo-wrap">
-        <div className="event-venue-frame">
-          <img
-            src="/images/anillo-abrazo.jpg"
-            alt="Finca El Refugio"
-            className="event-venue-img"
-            loading="lazy"
-          />
-        </div>
+        <h2 className="event-venue-heading font-serif">El Refugio Casa de Eventos</h2>
       </div>
 
       {/* Datos limpios y directos sin repeticiones */}
       <div className="event-meta-clean">
-        <p className="event-date-highlight font-serif">
-          Sábado 6 de Marzo de 2027 • 4:00 PM
-        </p>
         <p className="event-address-highlight font-sans">
           La Francia • Manizales, Caldas
         </p>
@@ -75,6 +57,9 @@ export default function EventDetails() {
         </button>
       </div>
 
+      <div className="flow-divider">
+        <span className="flow-divider-symbol">✦</span>
+      </div>
       {/* Itinerario Minimalista Vertical */}
       <div className="editorial-itinerary-wrap">
         <span className="itinerary-eyebrow font-sans">ITINERARIO</span>
@@ -110,8 +95,8 @@ export default function EventDetails() {
             <span className="node-time font-serif">8:00 PM</span>
             <div className="node-bullet"></div>
             <div className="node-content">
-              <h4 className="node-title font-serif">Fiesta</h4>
-              <p className="node-desc font-sans">¡Música y baile!</p>
+              <h4 className="node-title font-serif">A Divertirnos</h4>
+              <p className="node-desc font-sans">¡Volvamos a ser niños!</p>
             </div>
           </div>
         </div>

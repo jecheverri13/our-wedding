@@ -2,14 +2,15 @@ import React from 'react';
 
 export default function CoupleMoments() {
   return (
-    <section className="editorial-flow-section couple-flow">
+    <section id="promesa" className="editorial-flow-section couple-flow">
+
       {/* Versículo bíblico integrado directamente en la textura de papel */}
       <div className="artisan-verse-wrap">
         <span className="flow-eyebrow font-sans">NUESTRA PROMESA</span>
         <blockquote className="artisan-verse-text font-serif">
           «Sobre toda cosa guardada, guarda tu corazón; porque de él mana la vida.»
         </blockquote>
-        <cite className="artisan-verse-ref font-sans">— PROVERBIOS 4:23 —</cite>
+        <cite className="flow-eyebrow font-sans">— PROVERBIOS 4:23 —</cite>
       </div>
 
       {/* Foto principal de compromiso con estilo fino posada sobre papel */}
@@ -24,11 +25,11 @@ export default function CoupleMoments() {
             />
           </div>
           <div className="artisan-photo-subtext">
-            <span className="photo-title font-serif">Y ahora, para siempre</span>
-            <span className="photo-names font-script">Junior & Kathe</span>
+            <span className="photo-title font-serif">Entendimos que no había mejor lugar para guardar nuestro corazón que en Dios. Cuando Él llena nuestra vida por completo, determina el rumbo de nuestro camino. Fue justamente guardar nuestro corazón en Él lo que nos reunió para hacer realidad su sueño en nosotros: la familia Echeverri Saldarriaga.</span>
           </div>
         </div>
       </div>
+
 
       <div className="flow-divider">
         <span className="flow-divider-symbol">✦</span>
