@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:build": "docker build -t wedding-day-front .",
+    "docker:run": "docker run -d -p 8080:80 --name wedding-day-front wedding-day-front",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",

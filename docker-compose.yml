@@ -1,0 +1,12 @@
+services:
+  wedding-front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wedding-day-front:latest
+    container_name: wedding-day-front
+    ports:
+      - "8080:80"
+    environment:
+      - PORT=80
+    restart: unless-stopped
