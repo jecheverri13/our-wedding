@@ -64,10 +64,12 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: var(--color-paper-warm);
-  /* Textura procedural de papel artesanal con grano */
+  /* Textura real de papel artesanal con vetas y arrugas táctiles */
   background-image:
-    radial-gradient(circle at 50% 20%, rgba(255, 253, 249, 0.8) 0%, rgba(244, 239, 230, 0.95) 70%, rgba(235, 226, 214, 1) 100%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    linear-gradient(rgba(235, 226, 214, 0.35), rgba(235, 226, 214, 0.35)),
+    url("/images/papel-artesanal-textura.jpg");
+  background-repeat: repeat;
+  background-size: cover, 400px 400px;
   color: var(--color-text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -113,10 +115,12 @@ button {
   margin: 0 auto;
   position: relative;
   background-color: var(--color-paper-base);
-  /* Textura de papel fino de algodón */
+  /* Textura real de papel artesanal fino para el pliego de la invitación */
   background-image:
-    radial-gradient(ellipse at 50% 0%, #FFFDF9 0%, #FAF6EE 55%, #F4ECE0 100%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+    linear-gradient(rgba(255, 253, 249, 0.2), rgba(250, 246, 238, 0.25)),
+    url("/images/papel-artesanal-textura.jpg");
+  background-repeat: repeat;
+  background-size: cover, 400px 400px;
   box-shadow: 0 0 70px rgba(74, 45, 30, 0.08), 0 10px 40px rgba(74, 45, 30, 0.06);
   border-left: 1px solid rgba(220, 200, 180, 0.35);
   border-right: 1px solid rgba(220, 200, 180, 0.35);
