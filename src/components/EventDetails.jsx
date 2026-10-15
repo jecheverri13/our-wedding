@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Clock, Calendar, Navigation, Check, Copy } from 'lucide-react';
+import { MapPin, Navigation, Check, Copy } from 'lucide-react';
 
 export default function EventDetails() {
   const [copied, setCopied] = useState(false);
@@ -13,122 +13,114 @@ export default function EventDetails() {
   };
 
   return (
-    <section id="lugar" className="section event-details-section">
-      <div className="container">
-        <div className="section-title-wrap">
-          <span className="section-subtitle">¿DÓNDE & CUÁNDO?</span>
-          <h2 className="section-title font-serif">Lugar & Celebración</h2>
-          <div className="section-divider">
-            <MapPin size={16} className="divider-icon" />
-          </div>
+    <section id="lugar" className="editorial-flow-section event-flow">
+      <div className="flow-header">
+        <span className="flow-eyebrow font-sans">CEREMONIA Y RECEPCIÓN</span>
+        <h2 className="event-venue-heading font-serif">Finca El Refugio</h2>
+        <p className="event-poetic-quote font-serif">
+          «Un rincón rodeado de naturaleza y toda nuestra gente.»
+        </p>
+      </div>
+
+      {/* Foto artística del lugar con marco sutil de papel */}
+      <div className="event-venue-photo-wrap">
+        <div className="event-venue-frame">
+          <img
+            src="/images/anillo-abrazo.jpg"
+            alt="Finca El Refugio"
+            className="event-venue-img"
+            loading="lazy"
+          />
         </div>
+      </div>
 
-        <div className="canva-event-grid">
-          {/* Tarjeta de Ceremonia y Recepción */}
-          <div className="canva-card-envelope-inner">
-            <div className="canva-card-border event-card-border">
-              <div className="event-icon-circle-canva">
-                <MapPin size={24} />
-              </div>
+      {/* Datos limpios y directos sin repeticiones */}
+      <div className="event-meta-clean">
+        <p className="event-date-highlight font-serif">
+          Sábado 6 de Marzo de 2027 • 4:00 PM
+        </p>
+        <p className="event-address-highlight font-sans">
+          La Francia • Manizales, Caldas
+        </p>
+      </div>
 
-              <span className="canva-card-tag font-sans">CEREMONIA & RECEPCIÓN</span>
-              <h3 className="event-venue-title font-serif">Finca El Refugio</h3>
-              <p className="event-venue-subtitle font-sans">LA FRANCIA • MANIZALES, CALDAS</p>
+      {/* Botones de acción minimalistas */}
+      <div className="event-action-buttons">
+        <a
+          href={locationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-paper-primary"
+        >
+          <Navigation size={16} />
+          <span>Abrir en Google Maps</span>
+        </a>
 
-              <div className="event-badges-row">
-                <div className="canva-info-pill">
-                  <Calendar size={14} />
-                  <span>Sábado, 6 de Marzo de 2027</span>
-                </div>
-                <div className="canva-info-pill">
-                  <Clock size={14} />
-                  <span>4:00 PM (Hora puntual)</span>
-                </div>
-              </div>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="btn-paper-subtle"
+        >
+          {copied ? (
+            <>
+              <Check size={16} color="#A84C2D" />
+              <span>¡Dirección copiada!</span>
+            </>
+          ) : (
+            <>
+              <Copy size={16} />
+              <span>Copiar dirección</span>
+            </>
+          )}
+        </button>
+      </div>
 
-              <p className="event-description-text font-serif">
-                Un hermoso entorno campestre donde daremos el «Sí, acepto» y celebraremos junto a quienes más amamos.
-              </p>
-
-              <div className="event-button-group">
-                <a
-                  href={locationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full-mobile"
-                >
-                  <Navigation size={17} />
-                  <span>Abrir en Google Maps</span>
-                </a>
-
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className="btn-secondary w-full-mobile"
-                >
-                  {copied ? (
-                    <>
-                      <Check size={16} color="#B25332" />
-                      <span>¡Dirección Copiada!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={16} />
-                      <span>Copiar Dirección</span>
-                    </>
-                  )}
-                </button>
-              </div>
+      {/* Itinerario Minimalista Vertical */}
+      <div className="editorial-itinerary-wrap">
+        <span className="itinerary-eyebrow font-sans">ITINERARIO</span>
+        <div className="artisan-timeline">
+          <div className="timeline-node">
+            <span className="node-time font-serif">4:00 PM</span>
+            <div className="node-bullet"></div>
+            <div className="node-content">
+              <h4 className="node-title font-serif">Ceremonia</h4>
+              <p className="node-desc font-sans">Bendición matrimonial</p>
             </div>
           </div>
 
-          {/* Tarjeta de Itinerario */}
-          <div className="canva-card-envelope-inner">
-            <div className="canva-card-border itinerary-card-border">
-              <span className="canva-card-tag font-sans">CRONOGRAMA</span>
-              <h3 className="itinerary-heading font-serif">Itinerario del Día</h3>
+          <div className="timeline-node">
+            <span className="node-time font-serif">5:30 PM</span>
+            <div className="node-bullet"></div>
+            <div className="node-content">
+              <h4 className="node-title font-serif">Brindis & Fotos</h4>
+              <p className="node-desc font-sans">Celebración al atardecer</p>
+            </div>
+          </div>
 
-              <div className="canva-timeline">
-                <div className="timeline-canva-item">
-                  <span className="timeline-canva-time font-sans">4:00 PM</span>
-                  <div className="timeline-canva-dot"></div>
-                  <div className="timeline-canva-info">
-                    <h4 className="timeline-canva-title font-serif">Ceremonia Nupcial</h4>
-                    <p className="timeline-canva-desc">Nuestra unión y bendición matrimonial.</p>
-                  </div>
-                </div>
+          <div className="timeline-node">
+            <span className="node-time font-serif">6:30 PM</span>
+            <div className="node-bullet"></div>
+            <div className="node-content">
+              <h4 className="node-title font-serif">Cena Especial</h4>
+              <p className="node-desc font-sans">Compartiendo juntos</p>
+            </div>
+          </div>
 
-                <div className="timeline-canva-item">
-                  <span className="timeline-canva-time font-sans">5:30 PM</span>
-                  <div className="timeline-canva-dot"></div>
-                  <div className="timeline-canva-info">
-                    <h4 className="timeline-canva-title font-serif">Coctel & Fotos</h4>
-                    <p className="timeline-canva-desc">Brindis al atardecer y fotos con invitados.</p>
-                  </div>
-                </div>
-
-                <div className="timeline-canva-item">
-                  <span className="timeline-canva-time font-sans">6:30 PM</span>
-                  <div className="timeline-canva-dot"></div>
-                  <div className="timeline-canva-info">
-                    <h4 className="timeline-canva-title font-serif">Cena & Brindis</h4>
-                    <p className="timeline-canva-desc">Compartiremos un menú especial juntos.</p>
-                  </div>
-                </div>
-
-                <div className="timeline-canva-item">
-                  <span className="timeline-canva-time font-sans">8:00 PM</span>
-                  <div className="timeline-canva-dot"></div>
-                  <div className="timeline-canva-info">
-                    <h4 className="timeline-canva-title font-serif">Fiesta & Celebración</h4>
-                    <p className="timeline-canva-desc">¡Música, baile y alegría para celebrar!</p>
-                  </div>
-                </div>
-              </div>
+          <div className="timeline-node">
+            <span className="node-time font-serif">8:00 PM</span>
+            <div className="node-bullet"></div>
+            <div className="node-content">
+              <h4 className="node-title font-serif">Fiesta</h4>
+              <p className="node-desc font-sans">¡Música y baile!</p>
             </div>
           </div>
         </div>
       </div>
+
+      <div className="flow-divider">
+        <span className="flow-divider-symbol">✦</span>
+      </div>
     </section>
   );
 }
+

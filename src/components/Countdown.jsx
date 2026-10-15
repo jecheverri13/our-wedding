@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, BellRing } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 export default function Countdown() {
   const targetDate = new Date('2027-03-06T16:00:00-05:00').getTime();
@@ -45,78 +45,47 @@ export default function Countdown() {
     window.open(url, '_blank');
   };
 
-  const handleDownloadICS = () => {
-    const icsData = [
-      "BEGIN:VCALENDAR",
-      "VERSION:2.0",
-      "PRODID:-//Junior&Kathe//Boda//ES",
-      "BEGIN:VEVENT",
-      "UID:boda-junior-kathe-20270306@weddingday",
-      "DTSTAMP:20261006T000000Z",
-      "DTSTART:20270306T210000Z",
-      "DTEND:20270307T070000Z",
-      "SUMMARY:Boda de Junior & Kathe 💍",
-      "DESCRIPTION:¡Acompáñanos a celebrar nuestra unión! Finca El Refugio, Manizales.",
-      "LOCATION:Finca El Refugio, La Francia, Manizales, Caldas, Colombia",
-      "STATUS:CONFIRMED",
-      "END:VEVENT",
-      "END:VCALENDAR"
-    ].join("\r\n");
-
-    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'Boda-Junior-y-Kathe.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
-    <section className="section countdown-canva-section">
-      <div className="container">
-        <div className="canva-card-envelope-inner">
-          <div className="canva-card-border countdown-inner-border">
-            <span className="canva-card-tag font-sans">CUENTA REGRESIVA</span>
-            <h2 className="countdown-title font-serif">El Gran Día Se Acerca</h2>
-            
-            <p className="countdown-subtitle font-serif">
-              Sábado 6 de Marzo de 2027 • 4:00 PM • Hora Colombia
-            </p>
+    <section className="editorial-flow-section countdown-flow">
+      <div className="flow-header">
+        <span className="flow-eyebrow font-sans">CUENTA REGRESIVA</span>
+        <h2 className="countdown-heading font-serif">Nos vemos en...</h2>
+      </div>
 
-            {/* Grid 4 columnas en móvil con padding ajustado */}
-            <div className="countdown-mobile-grid">
-              <div className="countdown-mobile-box">
-                <span className="countdown-val font-serif">{String(timeLeft.days).padStart(2, '0')}</span>
-                <span className="countdown-unit font-sans">DÍAS</span>
-              </div>
-              <div className="countdown-mobile-box">
-                <span className="countdown-val font-serif">{String(timeLeft.hours).padStart(2, '0')}</span>
-                <span className="countdown-unit font-sans">HORAS</span>
-              </div>
-              <div className="countdown-mobile-box">
-                <span className="countdown-val font-serif">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                <span className="countdown-unit font-sans">MIN</span>
-              </div>
-              <div className="countdown-mobile-box highlight-box">
-                <span className="countdown-val font-serif">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                <span className="countdown-unit font-sans">SEG</span>
-              </div>
-            </div>
-
-            <div className="countdown-buttons-row">
-              <button onClick={handleGoogleCalendar} className="btn-secondary w-full-mobile">
-                <Calendar size={16} />
-                <span>Agendar en Google Calendar</span>
-              </button>
-              <button onClick={handleDownloadICS} className="btn-secondary w-full-mobile">
-                <BellRing size={16} />
-                <span>Guardar en Apple / iCal</span>
-              </button>
-            </div>
-          </div>
+      {/* Números etéreos flotando sobre la textura de papel */}
+      <div className="artisan-countdown-grid">
+        <div className="artisan-countdown-item">
+          <span className="countdown-num font-serif">{String(timeLeft.days).padStart(2, '0')}</span>
+          <span className="countdown-txt font-sans">DÍAS</span>
         </div>
+        <span className="countdown-sep font-serif">:</span>
+        <div className="artisan-countdown-item">
+          <span className="countdown-num font-serif">{String(timeLeft.hours).padStart(2, '0')}</span>
+          <span className="countdown-txt font-sans">HORAS</span>
+        </div>
+        <span className="countdown-sep font-serif">:</span>
+        <div className="artisan-countdown-item">
+          <span className="countdown-num font-serif">{String(timeLeft.minutes).padStart(2, '0')}</span>
+          <span className="countdown-txt font-sans">MIN</span>
+        </div>
+        <span className="countdown-sep font-serif">:</span>
+        <div className="artisan-countdown-item">
+          <span className="countdown-num font-serif">{String(timeLeft.seconds).padStart(2, '0')}</span>
+          <span className="countdown-txt font-sans">SEG</span>
+        </div>
+      </div>
+
+      <div className="countdown-cta-wrap">
+        <button onClick={handleGoogleCalendar} className="btn-paper-subtle">
+          <Calendar size={15} />
+          <span>Agendar en mi Calendario</span>
+        </button>
+      </div>
+
+      <div className="flow-divider">
+        <span className="flow-divider-symbol">✦</span>
       </div>
     </section>
   );
 }
+

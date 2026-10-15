@@ -45,52 +45,56 @@ export default function App() {
 
       {/* CONTENIDO DE LA INVITACIÓN DESPLEGADA */}
       <div className={`wedding-content-wrapper ${isEnvelopeOpen ? 'content-visible' : 'content-hidden'}`}>
-        {/* Barra superior discreta */}
-        <div className="top-navigation-bar">
-          <span className="top-nav-monogram font-script">J & K</span>
-          <button 
-            type="button" 
-            onClick={handleReopenEnvelope} 
-            className="top-nav-envelope-btn"
-            title="Cerrar y volver a abrir el sobre"
-          >
-            💌 <span>Ver Sobre</span>
-          </button>
-        </div>
+        {/* Folio de Papel Artesanal Continuo (Estilo Carta / Reel) */}
+        <main className="wedding-paper-sheet">
+          {/* Barra superior discreta */}
+          <div className="top-navigation-bar">
+            <span className="top-nav-monogram font-serif">J & K</span>
+            <button
+              type="button"
+              onClick={handleReopenEnvelope}
+              className="top-nav-envelope-btn font-sans"
+              title="Cerrar y volver a abrir el sobre"
+            >
+              <span>Ver Sobre</span>
+            </button>
+          </div>
 
-        {/* 2. Tarjeta Principal / Portada estilo Canva */}
-        <HeaderHero 
-          onScrollToSection={scrollToSection} 
-          onReopenEnvelope={handleReopenEnvelope} 
-        />
+          {/* 1. Portada / Bienvenida Editorial */}
+          <HeaderHero
+            onScrollToSection={scrollToSection}
+          />
 
-        {/* 3. PRIMERO: Sección de los Niños - «Estos niños se casan y quieren que los acompañes» */}
-        <ChildhoodSection />
 
-        {/* 4. SEGUNDO: La Promesa de Adultos - Versículo Proverbios 4:23 & Fotos de Compromiso */}
-        <CoupleMoments />
+          {/* 2. Nuestra Historia: De Niños a Hoy */}
+          <ChildhoodSection />
 
-        {/* 5. TERCERO: Cuenta Regresiva */}
-        <Countdown />
+          {/* 3. Nuestra Promesa: Versículo & Amor */}
+          <CoupleMoments />
 
-        {/* 6. CUARTO: Dónde & Cuándo (Finca El Refugio, Manizales + Itinerario) */}
-        <EventDetails />
+          {/* 4. Cuenta Regresiva */}
+          <Countdown />
 
-        {/* 7. QUINTO: Código de Vestimenta & Reserva de Blanco y Terracota */}
-        <DressCode />
+          {/* 5. Dónde & Cuándo + Itinerario */}
+          <EventDetails />
 
-        {/* 8. SEXTO: Lluvia de Sobres */}
-        <GiftSection />
+          {/* 6. Código de Vestimenta */}
+          <DressCode />
 
-        {/* 9. SÉPTIMO: Confirmación de Asistencia (RSVP por WhatsApp) */}
-        <RsvpSection />
+          {/* 7. Lluvia de Sobres */}
+          <GiftSection />
 
-        {/* 10. Reproductor de Audio Flotante */}
+          {/* 8. Confirmación de Asistencia (RSVP) */}
+          <RsvpSection />
+
+          {/* 9. Cierre / Pie de Página */}
+          <Footer />
+        </main>
+
+        {/* Reproductor de Audio Flotante Circular */}
         <AudioPlayer ref={audioPlayerRef} />
-
-        {/* 11. Pie de Página */}
-        <Footer />
       </div>
     </div>
   );
 }
+

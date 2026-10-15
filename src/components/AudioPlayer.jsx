@@ -41,23 +41,23 @@ const AudioPlayer = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="audio-floating-wrap">
+    <div className="artisan-audio-floater">
       <audio ref={audioRef} src={musicUrl} loop preload="auto" />
       <button
         onClick={togglePlay}
-        className={`audio-toggle-btn ${isPlaying ? 'playing' : ''}`}
-        title={isPlaying ? "Pausar melodía" : "Reproducir música romántica"}
-        aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
+        className={`artisan-audio-circle ${isPlaying ? 'is-playing' : ''}`}
+        title={isPlaying ? "Silenciar música" : "Reproducir música"}
+        aria-label={isPlaying ? "Silenciar música" : "Reproducir música"}
       >
-        <span className="audio-wave-icon">
-          {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
-        </span>
-        <span className="audio-label font-sans">
-          {isPlaying ? "Música" : "Música"}
-        </span>
+        {isPlaying ? (
+          <Volume2 size={17} className="audio-icon-active" />
+        ) : (
+          <VolumeX size={17} className="audio-icon-muted" />
+        )}
       </button>
     </div>
   );
 });
+
 
 export default AudioPlayer;

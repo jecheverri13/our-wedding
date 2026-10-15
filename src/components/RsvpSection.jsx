@@ -75,139 +75,123 @@ export default function RsvpSection() {
   };
 
   return (
-    <section id="rsvp" className="section rsvp-canva-section">
-      <div className="container-narrow">
-        <div className="section-title-wrap">
-          <span className="section-subtitle">CONFIRMACIÓN</span>
-          <h2 className="section-title font-serif">Tu Presencia es Vital</h2>
-          <div className="section-divider">
-            <Heart size={16} className="divider-icon" fill="#B25332" stroke="none" />
+    <section id="rsvp" className="editorial-flow-section rsvp-flow">
+      <div className="flow-header">
+        <span className="flow-eyebrow font-sans">CONFIRMACIÓN DE ASISTENCIA</span>
+        <h2 className="rsvp-heading font-serif">¿Nos Acompañas?</h2>
+        <p className="rsvp-sub-lead font-serif">
+          «Tu presencia llena de alegría este día. Por favor confírmanos tu asistencia.»
+        </p>
+      </div>
+
+      <div className="artisan-rsvp-sheet">
+        <form onSubmit={handleSubmit} className="artisan-rsvp-form">
+          {/* Nombre */}
+          <div className="artisan-field">
+            <label htmlFor="name" className="artisan-label font-sans">
+              NOMBRE Y APELLIDO *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Escribe tu nombre completo"
+              required
+              className="artisan-input font-serif"
+            />
           </div>
-        </div>
 
-        <div className="canva-card-envelope-inner">
-          <div className="canva-card-border rsvp-inner-border">
-            <span className="canva-card-tag font-sans">R.S.V.P.</span>
-            <h3 className="rsvp-card-heading font-serif">¿Nos Acompañas?</h3>
-            <p className="rsvp-card-lead font-serif">
-              Por favor confírmanos antes para preparar cada detalle especialmente para ti.
-            </p>
-
-            <form onSubmit={handleSubmit} className="canva-rsvp-form">
-              {/* Nombre */}
-              <div className="canva-field-group">
-                <label htmlFor="name" className="canva-field-label font-sans">
-                  <User size={15} />
-                  <span>NOMBRE COMPLETO *</span>
-                </label>
+          {/* Opción de asistencia */}
+          <div className="artisan-field">
+            <label className="artisan-label font-sans">
+              ¿ASISTIRÁS A LA CELEBRACIÓN? *
+            </label>
+            <div className="artisan-radio-duo">
+              <label className={`artisan-radio-option ${formData.attendance === 'yes' ? 'selected' : ''}`}>
                 <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  type="radio"
+                  name="attendance"
+                  value="yes"
+                  checked={formData.attendance === 'yes'}
                   onChange={handleChange}
-                  placeholder="Tu nombre y apellido"
-                  required
-                  className="canva-input"
                 />
-              </div>
+                <span className="radio-text font-serif">¡Sí, asistiré con alegría! 🥂</span>
+              </label>
 
-              {/* Opción de asistencia */}
-              <div className="canva-field-group">
-                <label className="canva-field-label font-sans">
-                  <CheckCircle2 size={15} />
-                  <span>CONFIRMACIÓN DE ASISTENCIA *</span>
-                </label>
-                <div className="canva-radio-grid">
-                  <label className={`canva-radio-card ${formData.attendance === 'yes' ? 'selected' : ''}`}>
-                    <input
-                      type="radio"
-                      name="attendance"
-                      value="yes"
-                      checked={formData.attendance === 'yes'}
-                      onChange={handleChange}
-                    />
-                    <div className="canva-radio-body">
-                      <span className="canva-radio-icon">🥂</span>
-                      <span className="canva-radio-text font-serif">¡Sí, asistiré con alegría!</span>
-                    </div>
-                  </label>
-
-                  <label className={`canva-radio-card ${formData.attendance === 'no' ? 'selected' : ''}`}>
-                    <input
-                      type="radio"
-                      name="attendance"
-                      value="no"
-                      checked={formData.attendance === 'no'}
-                      onChange={handleChange}
-                    />
-                    <div className="canva-radio-body">
-                      <span className="canva-radio-icon">💌</span>
-                      <span className="canva-radio-text font-serif">No podré asistir</span>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              {/* Acompañantes si asiste */}
-              {formData.attendance === 'yes' && (
-                <div className="canva-field-group">
-                  <label htmlFor="companions" className="canva-field-label font-sans">
-                    <Users size={15} />
-                    <span>NÚMERO DE PERSONAS</span>
-                  </label>
-                  <select
-                    id="companions"
-                    name="companions"
-                    value={formData.companions}
-                    onChange={handleChange}
-                    className="canva-select"
-                  >
-                    <option value="1">1 persona (Solo yo)</option>
-                    <option value="2">2 personas (Con acompañante)</option>
-                    <option value="3">3 personas (Familia)</option>
-                    <option value="4">4 personas (Familia)</option>
-                  </select>
-                </div>
-              )}
-
-              {/* Mensaje */}
-              <div className="canva-field-group">
-                <label htmlFor="message" className="canva-field-label font-sans">
-                  <FileText size={15} />
-                  <span>MENSAJE O DESEOS (OPCIONAL)</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
+              <label className={`artisan-radio-option ${formData.attendance === 'no' ? 'selected' : ''}`}>
+                <input
+                  type="radio"
+                  name="attendance"
+                  value="no"
+                  checked={formData.attendance === 'no'}
                   onChange={handleChange}
-                  rows={3}
-                  placeholder="Escríbenos una dedicatoria o deseo..."
-                  className="canva-textarea"
-                ></textarea>
-              </div>
-
-              {/* Botón */}
-              <div className="canva-submit-wrap">
-                <button type="submit" className="btn-whatsapp-canva">
-                  <MessageCircle size={20} />
-                  <span>Confirmar por WhatsApp</span>
-                </button>
-                <span className="canva-whatsapp-help font-sans">
-                  Envía la confirmación al +57 311 450 0833
-                </span>
-              </div>
-            </form>
-
-            {submitted && (
-              <div className="canva-success-box animate-fade-in">
-                <CheckCircle2 size={20} color="#25D366" />
-                <span className="font-serif">¡Gracias por confirmar! Abriendo WhatsApp...</span>
-              </div>
-            )}
+                />
+                <span className="radio-text font-serif">No podré asistir 💌</span>
+              </label>
+            </div>
           </div>
-        </div>
+
+          {/* Acompañantes si asiste */}
+          {formData.attendance === 'yes' && (
+            <div className="artisan-field">
+              <label htmlFor="companions" className="artisan-label font-sans">
+                NÚMERO DE PERSONAS
+              </label>
+              <select
+                id="companions"
+                name="companions"
+                value={formData.companions}
+                onChange={handleChange}
+                className="artisan-select font-serif"
+              >
+                <option value="1">1 persona (Solo yo)</option>
+                <option value="2">2 personas (Con acompañante)</option>
+                <option value="3">3 personas (Familia)</option>
+                <option value="4">4 personas (Familia)</option>
+              </select>
+            </div>
+          )}
+
+          {/* Mensaje */}
+          <div className="artisan-field">
+            <label htmlFor="message" className="artisan-label font-sans">
+              DEDICATORIA O MENSAJE (OPCIONAL)
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={2}
+              placeholder="Un deseo o bendición para nosotros..."
+              className="artisan-textarea font-serif"
+            ></textarea>
+          </div>
+
+          {/* Botón WhatsApp */}
+          <div className="artisan-submit-wrap">
+            <button type="submit" className="btn-artisan-whatsapp">
+              <MessageCircle size={18} />
+              <span>Confirmar por WhatsApp</span>
+            </button>
+            <span className="artisan-whatsapp-hint font-sans">
+              Se enviará tu respuesta directamente al WhatsApp de los novios
+            </span>
+          </div>
+        </form>
+
+        {submitted && (
+          <div className="artisan-success-pill animate-fade-in">
+            <CheckCircle2 size={18} color="#25D366" />
+            <span className="font-serif">¡Gracias! Abriendo WhatsApp para enviar tu confirmación...</span>
+          </div>
+        )}
+      </div>
+
+      <div className="flow-divider">
+        <span className="flow-divider-symbol">✦</span>
       </div>
     </section>
   );
