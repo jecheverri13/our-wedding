@@ -144,14 +144,14 @@ button {
 
 /* Flujo editorial ligero - Sin cortes duros ni cajas pesadas */
 .editorial-flow-section {
-  padding: 3.5rem 1.5rem;
+  padding: 1.8rem 1.4rem 1.2rem;
   position: relative;
   text-align: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .editorial-flow-section {
-    padding: 0.5rem 1rem;
+    padding: 1.2rem 1rem 0.8rem;
   }
 }
 
@@ -161,7 +161,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  margin: 1.5rem;
+  margin: 1.2rem auto 0;
   opacity: 0.7;
 }
 
@@ -307,4 +307,88 @@ button {
 
 .animate-float {
   animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* ========================================================
+   SCROLL REVEAL ANIMATIONS (UX LUXURY EDITORIAL)
+   Smooth 60fps GPU-accelerated reveals on scroll
+   ======================================================== */
+
+.reveal-on-scroll {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Default / Fade-Up */
+.reveal-on-scroll,
+.reveal-fade-up {
+  transform: translateY(28px);
+}
+
+/* Fade Down */
+.reveal-fade-down {
+  transform: translateY(-24px);
+}
+
+/* Slide from Left */
+.reveal-fade-left {
+  transform: translateX(-32px);
+}
+
+/* Slide from Right */
+.reveal-fade-right {
+  transform: translateX(32px);
+}
+
+/* Zoom / Scale */
+.reveal-scale {
+  transform: scale(0.92);
+}
+
+/* Tilt specific for Childhood photos */
+.reveal-tilt-left {
+  transform: translateX(-24px) rotate(-6deg);
+}
+
+.reveal-tilt-right {
+  transform: translateX(24px) rotate(6deg);
+}
+
+/* Active Revealed State */
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+}
+
+/* Preserve specific tilts when revealed */
+.artisan-photo-item.tilt-left.is-revealed {
+  transform: translate3d(0, 0, 0) scale(1) rotate(-2.5deg);
+}
+
+.artisan-photo-item.tilt-right.is-revealed {
+  transform: translate3d(0, 0, 0) scale(1) rotate(2.5deg);
+}
+
+/* Stagger Delays for Cascade Waves */
+.reveal-delay-80 { transition-delay: 80ms; }
+.reveal-delay-100 { transition-delay: 100ms; }
+.reveal-delay-150 { transition-delay: 150ms; }
+.reveal-delay-200 { transition-delay: 200ms; }
+.reveal-delay-250 { transition-delay: 250ms; }
+.reveal-delay-300 { transition-delay: 300ms; }
+.reveal-delay-350 { transition-delay: 350ms; }
+.reveal-delay-400 { transition-delay: 400ms; }
+.reveal-delay-500 { transition-delay: 500ms; }
+.reveal-delay-600 { transition-delay: 600ms; }
+
+/* Accessible fallbacks */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

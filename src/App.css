@@ -43,156 +43,211 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 0;
   touch-action: manipulation;
-  cursor: pointer;
   user-select: none;
-  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fullscreen-envelope-container.envelope-opening-active {
   opacity: 0;
   pointer-events: none;
+  transition-delay: 0.6s;
 }
 
+/* Escenario del sobre: Pantalla completa en teléfonos móviles, centrado en desktop */
 .envelope-viewport-stage {
   position: relative;
-  width: 100%;
-  height: 100%;
-  max-width: 520px;
+  width: 100vw;
+  height: 100svh;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  box-shadow: 0 0 90px rgba(0, 0, 0, 0.6);
 }
 
-.fullscreen-envelope-art {
+@media (min-width: 540px) {
+  .envelope-viewport-stage {
+    width: min(480px, 92vw);
+    height: min(90vh, 850px);
+    aspect-ratio: 768 / 1376;
+    border-radius: 12px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65);
+  }
+}
+
+/* Paneles que se abren hacia los lados */
+.env-gate-panel {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  transition: transform 0.95s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease, opacity 0.85s ease;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
 
-.fullscreen-envelope-art.art-unfolding {
-  transform: scale(1.16);
-  filter: blur(2px);
-  opacity: 0.1;
+.env-gate-left {
+  clip-path: polygon(0 0, 50.15% 0, 50.15% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 50.15% 0, 50.15% 100%, 0 100%);
+  transform: translate3d(0, 0, 0);
+  z-index: 2;
 }
 
+.env-gate-right {
+  clip-path: polygon(49.85% 0, 100% 0, 100% 100%, 49.85% 100%);
+  -webkit-clip-path: polygon(49.85% 0, 100% 0, 100% 100%, 49.85% 100%);
+  transform: translate3d(0, 0, 0);
+  z-index: 2;
+}
+
+.env-gate-left.panel-slide-left {
+  transform: translate3d(-102%, 0, 0);
+}
+
+.env-gate-right.panel-slide-right {
+  transform: translate3d(102%, 0, 0);
+}
+
+/* Arte de alta calidad del sobre */
 .envelope-bg-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
-/* Área activa pulsante del Sello de Cera Dorado con Monograma J&K */
-.interactive-wax-seal-hotspot {
+/* Sello de cera interactivo único con bordes detallados */
+.interactive-wax-seal-btn {
   position: absolute;
   top: 50.4%;
   left: 50.8%;
   transform: translate(-50%, -50%);
-  width: 124px;
-  height: 124px;
+  width: 136px;
+  height: 136px;
   border-radius: 50%;
-  pointer-events: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 10;
   cursor: pointer;
-  transition: transform 0.35s ease, opacity 0.4s ease;
+  pointer-events: auto;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+  will-change: transform, opacity;
+  outline: none;
+}
+
+.interactive-wax-seal-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.interactive-wax-seal-btn:active {
+  transform: translate(-50%, -50%) scale(0.96);
+}
+
+.interactive-wax-seal-btn.seal-break-anim {
+  transform: translate(-50%, -65%) scale(1.18);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seal-detailed-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 10px 22px rgba(45, 17, 7, 0.65));
+  image-rendering: high-quality;
 }
 
 .seal-pulse-ring {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
   opacity: 0;
-  animation: sealRingRipple 3s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+  animation: sealRingRipple 2.8s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+  pointer-events: none;
 }
 
 .seal-glow-halo {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5), inset 0 0 15px rgba(255, 240, 190, 0.3);
-  animation: sealAuraBreathing 2.8s infinite ease-in-out;
-}
-
-.interactive-wax-seal-hotspot:hover {
-  transform: translate(-50%, -50%) scale(1.05);
-}
-
-.interactive-wax-seal-hotspot.seal-break-anim {
-  transform: translate(-50%, -50%) scale(1.45);
-  opacity: 0;
+  box-shadow: 0 0 28px rgba(212, 175, 55, 0.6), inset 0 0 15px rgba(255, 240, 190, 0.35);
+  animation: sealAuraBreathing 2.6s infinite ease-in-out;
+  pointer-events: none;
 }
 
 @keyframes sealAuraBreathing {
-
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.45;
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
-
   50% {
-    opacity: 0.85;
-    transform: scale(1.03);
+    opacity: 0.95;
+    transform: scale(1.04);
   }
 }
 
 @keyframes sealRingRipple {
   0% {
     transform: scale(0.95);
-    opacity: 0.7;
+    opacity: 0.8;
   }
-
   70% {
     transform: scale(1.35);
     opacity: 0;
   }
-
   100% {
     transform: scale(1.35);
     opacity: 0;
   }
 }
 
-/* Botón flotante delicado para abrir */
+/* Indicador flotante inferior */
 .seal-touch-prompt-wrap {
   position: absolute;
-  bottom: 6%;
+  bottom: 35px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   width: auto;
+  white-space: nowrap;
   display: flex;
   justify-content: center;
   transition: opacity 0.4s ease, transform 0.4s ease;
+  cursor: pointer;
 }
 
 .seal-touch-prompt-wrap.prompt-fade-out {
   opacity: 0;
   transform: translate(-50%, 15px);
+  pointer-events: none;
 }
 
 .btn-touch-seal-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   background: rgba(255, 253, 249, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   color: #382A1B;
   border: 1.5px solid rgba(212, 175, 55, 0.75);
   border-radius: 9999px;
-  padding: 0.8rem 1.8rem;
-  font-size: 0.88rem;
+  padding: 0.75rem 1.6rem;
+  font-size: 0.86rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.32), 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: var(--transition-smooth);
+  cursor: pointer;
 }
 
 .btn-touch-seal-pill:hover {
@@ -211,6 +266,22 @@ body {
   animation: pulseGlow 2s infinite ease-in-out;
 }
 
+@media (max-width: 480px) {
+  .interactive-wax-seal-btn {
+    width: 114px;
+    height: 114px;
+  }
+
+  .seal-touch-prompt-wrap {
+    bottom: 24px;
+  }
+
+  .btn-touch-seal-pill {
+    padding: 0.65rem 1.35rem;
+    font-size: 0.8rem;
+  }
+}
+
 /* ========================================================
    2. CONTENT WRAPPER & TOP BAR
    ======================================================== */
@@ -223,12 +294,12 @@ body {
 }
 
 .content-hidden {
-  display: none;
+  opacity: 1;
 }
 
 .content-visible {
   display: flex;
-  animation: fadeIn 1s ease-out;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .top-navigation-bar {
@@ -276,7 +347,7 @@ body {
    ======================================================== */
 
 .editorial-hero-clean {
-  padding: 3rem 1.5rem 3.5rem;
+  padding: 1.6rem 1.5rem 2.2rem;
   text-align: center;
   position: relative;
   display: flex;
@@ -303,7 +374,7 @@ body {
 
 .botanical-header-accent {
   width: 140px;
-  margin: 0 auto 1.2rem;
+  margin: 0 auto 0.8rem;
   opacity: 0.85;
 }
 
@@ -314,7 +385,7 @@ body {
 }
 
 .editorial-hero-inner {
-  max-width: 440px;
+  max-width: 480px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -322,10 +393,10 @@ body {
 }
 
 .editorial-intro-script {
-  font-size: clamp(3.2rem, 10vw, 4.6rem);
+  font-size: clamp(3.5rem, 9.5vw, 4.8rem);
   color: var(--color-terracotta);
   line-height: 1.05;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   letter-spacing: 0.02em;
   display: block;
   text-shadow: 0 1px 2px rgba(109, 45, 22, 0.06);
@@ -334,8 +405,8 @@ body {
 /* Marco sutil en arco con bordes rústicos artesanales */
 .hero-arch-photo-wrap {
   width: 100%;
-  max-width: 310px;
-  margin: 0.8rem auto 2.2rem;
+  max-width: 335px;
+  margin: 0.6rem auto 1.4rem;
   display: flex;
   justify-content: center;
   position: relative;
@@ -403,11 +474,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.6rem;
 }
 
 .hero-name {
-  font-size: clamp(2.6rem, 8vw, 3.8rem);
+  font-size: clamp(2.9rem, 8.5vw, 4.1rem);
   font-weight: 400;
   color: var(--color-terracotta-dark);
   line-height: 1;
@@ -415,7 +486,7 @@ body {
 }
 
 .hero-ampersand {
-  font-size: clamp(2.4rem, 7.5vw, 3.4rem);
+  font-size: clamp(2.6rem, 8vw, 3.6rem);
   color: var(--color-terracotta-light);
   line-height: 1;
   font-weight: 400;
@@ -426,11 +497,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.7rem;
 }
 
 .meta-date {
-  font-size: clamp(1.55rem, 5.2vw, 2.15rem);
+  font-size: clamp(1.6rem, 5.2vw, 2.25rem);
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -448,7 +519,7 @@ body {
 }
 
 .hero-scroll-cue {
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 .scroll-cue-btn {
@@ -475,7 +546,7 @@ body {
    ======================================================== */
 
 .flow-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -486,7 +557,7 @@ body {
   color: var(--color-terracotta);
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .flow-heading {
@@ -889,7 +960,7 @@ body {
 }
 
 /* ========================================================
-   7. CÓDIGO DE VESTIMENTA (ESTILO EXACTO AL REEL)
+   7. CÓDIGO DE VESTIMENTA (TRAJE FORMAL Y RESERVA DE COLOR)
    ======================================================== */
 
 .dresscode-heading {
@@ -899,118 +970,130 @@ body {
   font-style: italic;
 }
 
-.dresscode-attire-duo {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 2rem auto 2.2rem;
-  max-width: 380px;
-}
-
-.attire-card {
-  flex: 1;
+.dresscode-formal-container {
+  max-width: 420px;
+  margin: 1.5rem auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1.2rem;
 }
 
-.attire-icon-illustration {
-  width: 90px;
-  height: 110px;
+.formal-attire-spec-duo {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 6px 12px rgba(60, 36, 24, 0.1));
-}
-
-.attire-svg {
+  gap: 1.6rem;
   width: 100%;
-  height: 100%;
+  padding: 1rem 1.4rem;
+  background: rgba(255, 253, 249, 0.7);
+  border: 1px solid var(--color-paper-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(109, 45, 22, 0.05);
 }
 
-.attire-label {
-  font-size: clamp(1.9rem, 5.5vw, 2.4rem);
-  color: var(--color-terracotta-dark);
+.formal-spec-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.formal-role-script {
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
+  color: var(--color-terracotta);
   line-height: 1;
-  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
-.attire-spec {
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
+.formal-spec-text {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
   font-weight: 600;
   color: var(--color-text-secondary);
-  text-align: center;
-  margin-top: 0.35rem;
-  line-height: 1.45;
 }
 
-.attire-divider-dot {
+.formal-spec-divider {
   color: var(--color-gold);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   opacity: 0.7;
-  align-self: center;
-  margin-top: -1.5rem;
 }
 
-.dresscode-palette-clean {
-  margin: 1.8rem auto 1.4rem;
-  max-width: 400px;
+.dresscode-reserved-card {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  background: rgba(250, 245, 240, 0.75);
+  border: 1px dashed rgba(168, 76, 45, 0.35);
+  border-radius: 12px;
   text-align: center;
-}
-
-.palette-title {
-  display: block;
-  font-size: 1.2rem;
-  color: var(--color-terracotta-dark);
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.palette-swatches-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.palette-swatch-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
 }
 
-.palette-color-circle {
-  width: 36px;
-  height: 36px;
+.reserved-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: var(--color-terracotta);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.reserved-swatches-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.reserved-color-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #FFFDF9;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-paper-border);
+  box-shadow: 0 2px 8px rgba(109, 45, 22, 0.06);
+}
+
+.color-dot {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  border: 2px solid #FFFDF9;
-  box-shadow: 0 4px 10px rgba(60, 36, 24, 0.15);
-  transition: transform 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: inline-block;
 }
 
-.palette-swatch-item:hover .palette-color-circle {
-  transform: scale(1.15);
+.color-dot.white-dot {
+  background: #FFFFFF;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-.palette-color-name {
-  font-size: 0.76rem;
-  letter-spacing: 0.1em;
+.color-dot.terracotta-dot {
+  background: var(--color-terracotta);
+}
+
+.color-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   color: var(--color-text-secondary);
-  font-weight: 500;
 }
 
-.dresscode-friendly-note {
-  font-size: clamp(1.18rem, 3.6vw, 1.35rem);
+.reserved-amp {
+  font-size: 1.2rem;
+  color: var(--color-gold);
+}
+
+.dresscode-reserved-note {
+  font-size: clamp(1.05rem, 3.2vw, 1.2rem);
   color: var(--color-terracotta-dark);
   font-style: italic;
-  line-height: 1.6;
-  max-width: 420px;
-  margin: 1.4rem auto 0;
-  padding: 0 0.5rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* ========================================================
@@ -1301,4 +1384,479 @@ body {
   color: var(--color-terracotta-dark);
   border-color: var(--color-terracotta-light);
   background: rgba(255, 255, 255, 0.6);
+}
+
+/* ========================================================
+   12. MOBILE FULL-SCREEN RESPONSIVE SYSTEM (PANTALLA COMPLETA)
+   Ajuste armónico de tamaños para visualizar cada sección completa en móvil
+   ======================================================== */
+
+@media (max-width: 640px) {
+  /* Folio de papel en móvil */
+  .wedding-paper-sheet {
+    max-width: 100vw;
+    box-shadow: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  /* Flujo continuo editorial elegante y compacto sin vacíos forzados */
+  .editorial-hero-clean {
+    padding: 0.8rem 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .editorial-flow-section {
+    padding: 1rem 1rem 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  /* Barra superior discreta */
+  .top-navigation-bar {
+    padding: 0.35rem 1rem;
+    height: 38px;
+  }
+
+  .top-nav-monogram {
+    font-size: 1rem;
+  }
+
+  .top-nav-envelope-btn {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.68rem;
+  }
+
+  /* Divisores entre secciones */
+  .flow-divider {
+    margin: 0.4rem auto 0;
+    gap: 0.4rem;
+  }
+
+  .flow-divider::before,
+  .flow-divider::after {
+    width: 25px;
+    height: 1px;
+  }
+
+  .flow-divider-symbol {
+    font-size: 0.68rem;
+  }
+
+  .flow-header {
+    margin-bottom: 0.4rem;
+  }
+
+  .flow-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.15rem;
+  }
+
+  /* 1. PORTADA HERO */
+  .botanical-header-accent {
+    width: 110px;
+    margin: 0.2rem auto 0.4rem;
+  }
+
+  .editorial-intro-script {
+    font-size: 2.85rem;
+    line-height: 1.05;
+    margin-bottom: 0.45rem;
+  }
+
+  .hero-arch-photo-wrap {
+    max-width: 255px;
+    margin: 0.4rem auto 0.95rem;
+  }
+
+  .hero-arch-frame {
+    padding: 4px;
+    border-radius: 135px 135px 12px 12px / 175px 175px 14px 14px;
+  }
+
+  .hero-arch-frame::after {
+    inset: 2px;
+    border-radius: 132px 132px 10px 10px / 172px 172px 12px 12px;
+  }
+
+  .hero-arch-img {
+    border-radius: 131px 131px 10px 10px / 171px 171px 12px 12px;
+  }
+
+  .editorial-names-wrap {
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name {
+    font-size: 2.75rem;
+  }
+
+  .hero-ampersand {
+    font-size: 2.45rem;
+  }
+
+  .editorial-meta-line {
+    margin-bottom: 0.8rem;
+  }
+
+  .meta-date {
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-scroll-cue {
+    margin-top: 0.35rem;
+  }
+
+  .cue-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* 2. NUESTRA PROMESA (COUPLE MOMENTS) */
+  .artisan-verse-wrap {
+    margin: 0 auto 0.6rem;
+    max-width: 340px;
+  }
+
+  .artisan-verse-text {
+    font-size: 1.25rem;
+    line-height: 1.45;
+    margin: 0.35rem 0;
+  }
+
+  .artisan-couple-gallery {
+    max-width: 255px;
+  }
+
+  .artisan-main-frame {
+    padding: 6px 6px 14px;
+    border-radius: 6px;
+  }
+
+  .artisan-photo-subtext {
+    margin-top: 0.65rem;
+    max-width: 330px;
+  }
+
+  .photo-title {
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  /* 3. HISTORIA DE INFANCIA */
+  .childhood-flow .flow-header {
+    margin-bottom: 0.5rem;
+  }
+
+  .artisan-kids-duo {
+    gap: 0.9rem;
+    margin: 0.6rem auto;
+    max-width: 320px;
+  }
+
+  .artisan-photo-frame {
+    padding: 5px 5px 10px;
+    border-radius: 4px;
+  }
+
+  .artisan-photo-caption {
+    font-size: 1.65rem;
+    margin-top: 0.25rem;
+  }
+
+  .artisan-connector {
+    font-size: 1.85rem;
+  }
+
+  .flow-transition-text {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin: 0.5rem auto 0;
+    max-width: 330px;
+  }
+
+  /* 4. CUENTA REGRESIVA */
+  .countdown-flow .flow-header {
+    margin-bottom: 0.5rem;
+  }
+
+  .countdown-heading {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+
+  .event-date-highlight {
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .artisan-countdown-grid {
+    gap: 0.5rem;
+    margin: 0.75rem auto;
+  }
+
+  .artisan-countdown-item {
+    min-width: 62px;
+    padding: 0.6rem 0.65rem;
+    border-radius: 8px;
+  }
+
+  .countdown-num {
+    font-size: 1.85rem;
+  }
+
+  .countdown-txt {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+
+  .countdown-sep {
+    font-size: 1.5rem;
+  }
+
+  .countdown-cta-wrap {
+    margin-top: 0.75rem;
+  }
+
+  .btn-paper-subtle {
+    padding: 0.65rem 1.3rem;
+    font-size: 0.88rem;
+  }
+
+  /* 5. LUGAR & ITINERARIO */
+  .event-flow .flow-header {
+    margin-bottom: 0.35rem;
+  }
+
+  .event-venue-heading {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .event-meta-clean {
+    margin: 0.45rem auto;
+  }
+
+  .event-address-highlight {
+    font-size: 0.9rem;
+    letter-spacing: 0.14em;
+    margin-top: 0.25rem;
+  }
+
+  .event-action-buttons {
+    gap: 0.6rem;
+    margin: 0.55rem auto 0.75rem;
+  }
+
+  .btn-paper-primary {
+    padding: 0.62rem 1.25rem;
+    font-size: 0.88rem;
+  }
+
+  .editorial-itinerary-wrap {
+    margin-top: 0.4rem;
+    max-width: 340px;
+  }
+
+  .itinerary-eyebrow {
+    font-size: 0.76rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .artisan-timeline {
+    padding-left: 0.8rem;
+    gap: 0.55rem;
+  }
+
+  .artisan-timeline::before {
+    left: 3.5rem;
+    top: 5px;
+    bottom: 5px;
+  }
+
+  .timeline-node {
+    gap: 0.75rem;
+  }
+
+  .node-time {
+    width: 3.6rem;
+    font-size: 0.98rem;
+  }
+
+  .node-bullet {
+    width: 7px;
+    height: 7px;
+  }
+
+  .node-title {
+    font-size: 1.08rem;
+    line-height: 1.2;
+  }
+
+  .node-desc {
+    font-size: 0.82rem;
+  }
+
+  /* 6. CÓDIGO DE VESTIMENTA */
+  .dresscode-heading {
+    font-size: 1.85rem;
+  }
+
+  .dresscode-formal-container {
+    margin-top: 0.65rem;
+    gap: 0.85rem;
+    max-width: 340px;
+  }
+
+  .formal-attire-spec-duo {
+    padding: 0.75rem 1.1rem;
+    gap: 1.2rem;
+  }
+
+  .formal-role-script {
+    font-size: 1.65rem;
+  }
+
+  .formal-spec-text {
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
+  }
+
+  .dresscode-reserved-card {
+    padding: 0.9rem 1.1rem;
+  }
+
+  .reserved-eyebrow {
+    font-size: 0.72rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .reserved-swatches-row {
+    gap: 0.7rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .reserved-color-pill {
+    padding: 0.35rem 0.75rem;
+    gap: 0.45rem;
+  }
+
+  .color-dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .color-label {
+    font-size: 0.78rem;
+  }
+
+  .dresscode-reserved-note {
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  /* 7. LLUVIA DE SOBRES */
+  .gifts-heading {
+    font-size: 1.85rem;
+  }
+
+  .gifts-envelope-symbol {
+    font-size: 2.3rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .gifts-lead {
+    font-size: 1.25rem;
+    line-height: 1.42;
+  }
+
+  .gifts-subtext {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    max-width: 330px;
+    margin: 0.45rem auto 0;
+  }
+
+  /* 8. CONFIRMACIÓN RSVP */
+  .rsvp-heading {
+    font-size: 1.85rem;
+  }
+
+  .rsvp-sub-lead {
+    font-size: 1.02rem;
+    line-height: 1.4;
+    margin: 0.25rem auto 0.5rem;
+  }
+
+  .artisan-rsvp-sheet {
+    padding: 1.1rem 1.1rem;
+    max-width: 345px;
+  }
+
+  .artisan-field {
+    margin-bottom: 0.55rem;
+  }
+
+  .artisan-label {
+    font-size: 0.72rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .artisan-input,
+  .artisan-select,
+  .artisan-textarea {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.98rem;
+  }
+
+  .artisan-radio-duo {
+    gap: 0.5rem;
+  }
+
+  .artisan-radio-option {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .artisan-radio-option .radio-text {
+    font-size: 0.92rem;
+  }
+
+  .btn-artisan-whatsapp {
+    padding: 0.85rem 1.4rem;
+    font-size: 0.96rem;
+  }
+
+  .artisan-whatsapp-hint {
+    font-size: 0.75rem;
+  }
+
+  /* 9. PIE DE PÁGINA FOOTER */
+  .artisan-footer {
+    min-height: auto;
+    padding: 2.2rem 1.2rem 2.6rem;
+    margin-top: 0;
+  }
+
+  .footer-monogram {
+    font-size: 1.5rem;
+  }
+
+  .footer-closing-quote {
+    font-size: 1.12rem;
+    line-height: 1.45;
+    margin: 0.45rem auto 1.1rem;
+  }
+
+  .btn-scroll-top {
+    font-size: 0.72rem;
+    padding: 0.45rem 1rem;
+  }
 }

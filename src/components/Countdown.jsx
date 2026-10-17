@@ -47,7 +47,7 @@ export default function Countdown() {
 
   return (
     <section className="editorial-flow-section countdown-flow">
-      <div className="flow-header">
+      <div className="flow-header reveal-on-scroll reveal-fade-up">
         <span className="flow-eyebrow font-sans">Guarda la fecha</span>
         <br />
         <p className="countdown-heading font-serif">
@@ -63,35 +63,35 @@ export default function Countdown() {
 
       {/* Números etéreos flotando sobre la textura de papel */}
       <div className="artisan-countdown-grid">
-        <div className="artisan-countdown-item">
+        <div className="artisan-countdown-item reveal-on-scroll reveal-scale reveal-delay-100">
           <span className="countdown-num font-serif">{String(timeLeft.days).padStart(2, '0')}</span>
           <span className="countdown-txt font-sans">DÍAS</span>
         </div>
-        <span className="countdown-sep font-serif">:</span>
-        <div className="artisan-countdown-item">
+        <span className="countdown-sep font-serif reveal-on-scroll reveal-fade-up reveal-delay-150">:</span>
+        <div className="artisan-countdown-item reveal-on-scroll reveal-scale reveal-delay-200">
           <span className="countdown-num font-serif">{String(timeLeft.hours).padStart(2, '0')}</span>
           <span className="countdown-txt font-sans">HORAS</span>
         </div>
-        <span className="countdown-sep font-serif">:</span>
-        <div className="artisan-countdown-item">
+        <span className="countdown-sep font-serif reveal-on-scroll reveal-fade-up reveal-delay-250">:</span>
+        <div className="artisan-countdown-item reveal-on-scroll reveal-scale reveal-delay-300">
           <span className="countdown-num font-serif">{String(timeLeft.minutes).padStart(2, '0')}</span>
           <span className="countdown-txt font-sans">MIN</span>
         </div>
-        <span className="countdown-sep font-serif">:</span>
-        <div className="artisan-countdown-item">
+        <span className="countdown-sep font-serif reveal-on-scroll reveal-fade-up reveal-delay-350">:</span>
+        <div className="artisan-countdown-item reveal-on-scroll reveal-scale reveal-delay-400">
           <span className="countdown-num font-serif">{String(timeLeft.seconds).padStart(2, '0')}</span>
           <span className="countdown-txt font-sans">SEG</span>
         </div>
       </div>
 
-      <div className="countdown-cta-wrap">
+      <div className="countdown-cta-wrap reveal-on-scroll reveal-fade-up reveal-delay-500">
         <button onClick={handleGoogleCalendar} className="btn-paper-subtle">
           <Calendar size={15} />
           <span>Agendar en mi Calendario</span>
         </button>
       </div>
 
-      <div className="flow-divider">
+      <div className="flow-divider reveal-on-scroll reveal-fade-up reveal-delay-600">
         <span className="flow-divider-symbol">✦</span>
       </div>
     </section>

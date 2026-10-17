@@ -1,59 +1,80 @@
 import React, { useState } from 'react';
 import { Sparkles } from 'lucide-react';
-import confetti from 'canvas-confetti';
 
 export default function EnvelopeScreen({ onOpenEnvelope }) {
   const [isOpening, setIsOpening] = useState(false);
 
-  const triggerGoldConfetti = () => {
-    confetti({
-      particleCount: 70,
-      spread: 70,
-      origin: { y: 0.52 },
-      colors: ['#D4AF37', '#FFDF73', '#E6C687', '#FFFFFF', '#8A9A86'],
-      ticks: 200,
-      gravity: 0.9,
-      scalar: 0.9,
-    });
-  };
-
-  const handleOpen = () => {
+  const handleOpen = (e) => {
+    if (e) e.stopPropagation();
     if (isOpening) return;
     setIsOpening(true);
-    triggerGoldConfetti();
+
+    // Transición suave hacia los lados que revela directamente la pantalla principal
     setTimeout(() => {
       onOpenEnvelope();
-    }, 1200);
+    }, 850);
   };
 
   return (
     <div
       className={`fullscreen-envelope-container ${isOpening ? 'envelope-opening-active' : ''}`}
-      onClick={handleOpen}
-      role="button"
-      tabIndex={0}
-      aria-label="Toca el sello para abrir la invitación"
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleOpen(); }}
+      role="region"
+      aria-label="Invitación de boda de Junior y Kathe"
     >
-      {/* Fondo ambiental sage / verde olivo cálido */}
-      <div className="envelope-viewport-stage">
-        {/* El sobre completo vertical en terracota HD */}
-        <div className={`fullscreen-envelope-art ${isOpening ? 'art-unfolding' : ''}`}>
+      {/* Escenario de pantalla completa para móvil y centrado en desktop */}
+      <div className={`envelope-viewport-stage ${isOpening ? 'stage-opening-sides' : ''}`}>
+        
+        {/* Panel Izquierdo que se abre hacia la izquierda */}
+        <div className={`env-gate-panel env-gate-left ${isOpening ? 'panel-slide-left' : ''}`}>
           <img
-            src="/images/sobre-terracota-completo-hd.png"
-            alt="Sobre de boda terracota de Junior y Kathe"
+            src="/images/sobre-terracota-limpio-hd.png"
+            alt="Sobre de boda terracota"
             className="envelope-bg-image"
           />
-
-
-          {/* Área activa y pulsante del Sello de Cera Dorado */}
-          <div className={`interactive-wax-seal-hotspot ${isOpening ? 'seal-break-anim' : ''}`}>
-            <div className="seal-pulse-ring"></div>
-            <div className="seal-glow-halo"></div>
-          </div>
         </div>
+
+        {/* Panel Derecho que se abre hacia la derecha */}
+        <div className={`env-gate-panel env-gate-right ${isOpening ? 'panel-slide-right' : ''}`}>
+          <img
+            src="/images/sobre-terracota-limpio-hd.png"
+            alt=""
+            className="envelope-bg-image"
+          />
+        </div>
+
+        {/* Sello de cera dorado con bordes detallados (único, sin duplicados) */}
+        <button
+          type="button"
+          className={`interactive-wax-seal-btn ${isOpening ? 'seal-break-anim' : ''}`}
+          onClick={handleOpen}
+          aria-label="Toca el sello para abrir la invitación"
+        >
+          <img
+            src="/images/sello-dorado-detallado-jk.png"
+            alt="Sello de cera dorado detallado J&K"
+            className="seal-detailed-image"
+          />
+          <div className="seal-pulse-ring"></div>
+          <div className="seal-glow-halo"></div>
+        </button>
+
+        {/* Indicador sutil para abrir */}
+        <div 
+          className={`seal-touch-prompt-wrap ${isOpening ? 'prompt-fade-out' : ''}`}
+          onClick={handleOpen}
+        >
+          <button 
+            type="button" 
+            className="btn-touch-seal-pill font-sans"
+            tabIndex={-1}
+          >
+            <Sparkles size={15} className="sparkle-icon" />
+            <span>Toca el sello para abrir</span>
+            <Sparkles size={15} className="sparkle-icon" />
+          </button>
+        </div>
+
       </div>
     </div>
   );
 }
-

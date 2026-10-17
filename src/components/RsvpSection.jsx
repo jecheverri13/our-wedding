@@ -76,7 +76,7 @@ export default function RsvpSection() {
 
   return (
     <section id="rsvp" className="editorial-flow-section rsvp-flow">
-      <div className="flow-header">
+      <div className="flow-header reveal-on-scroll reveal-fade-up">
         <span className="flow-eyebrow font-sans">CONFIRMACIÓN DE ASISTENCIA</span>
         <h2 className="rsvp-heading font-serif">¿Nos Acompañas?</h2>
         <p className="rsvp-sub-lead font-serif">
@@ -84,7 +84,7 @@ export default function RsvpSection() {
         </p>
       </div>
 
-      <div className="artisan-rsvp-sheet">
+      <div className="artisan-rsvp-sheet reveal-on-scroll reveal-scale reveal-delay-150">
         <form onSubmit={handleSubmit} className="artisan-rsvp-form">
           {/* Nombre */}
           <div className="artisan-field">
@@ -190,7 +190,7 @@ export default function RsvpSection() {
         )}
       </div>
 
-      <div className="flow-divider">
+      <div className="flow-divider reveal-on-scroll reveal-fade-up reveal-delay-250">
         <span className="flow-divider-symbol">✦</span>
       </div>
     </section>

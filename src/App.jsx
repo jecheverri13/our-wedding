@@ -10,11 +10,15 @@ import GiftSection from './components/GiftSection';
 import RsvpSection from './components/RsvpSection';
 import AudioPlayer from './components/AudioPlayer';
 import Footer from './components/Footer';
+import useScrollReveal from './hooks/useScrollReveal';
 import './App.css';
 
 export default function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const audioPlayerRef = useRef(null);
+
+  // Activa las animaciones de scroll al abrir el sobre
+  useScrollReveal(isEnvelopeOpen);
 
   const handleOpenEnvelope = () => {
     setIsEnvelopeOpen(true);
@@ -27,6 +31,10 @@ export default function App() {
   const handleReopenEnvelope = () => {
     setIsEnvelopeOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Permitir que las animaciones vuelvan a reproducirse si se reabre el sobre
+    document.querySelectorAll('.reveal-on-scroll.is-revealed').forEach((el) => {
+      el.classList.remove('is-revealed');
+    });
   };
 
   const scrollToSection = (sectionId) => {

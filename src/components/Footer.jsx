@@ -8,12 +8,12 @@ export default function Footer() {
 
   return (
     <footer className="artisan-footer">
-      <div className="footer-monogram font-serif">J & K</div>
-      <p className="footer-closing-quote font-serif">
+      <div className="footer-monogram font-serif reveal-on-scroll reveal-fade-up">J & K</div>
+      <p className="footer-closing-quote font-serif reveal-on-scroll reveal-fade-up reveal-delay-150">
         «Con todo nuestro amor, los esperamos para celebrar juntos.»
       </p>
 
-      <div className="footer-action-wrap">
+      <div className="footer-action-wrap reveal-on-scroll reveal-fade-up reveal-delay-250">
         <button onClick={scrollToTop} className="btn-scroll-top font-sans" aria-label="Volver al inicio">
           <ArrowUp size={14} />
           <span>Volver al inicio</span>

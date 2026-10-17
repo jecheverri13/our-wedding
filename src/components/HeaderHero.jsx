@@ -3,11 +3,9 @@ import { ChevronDown } from 'lucide-react';
 
 export default function HeaderHero({ onScrollToSection }) {
   return (
-    <header className="editorial-hero-clean animate-fade-in">
-
-
+    <header className="editorial-hero-clean">
       {/* Ramillete botánico sutil en acuarela */}
-      <div className="botanical-header-accent" aria-hidden="true">
+      <div className="botanical-header-accent reveal-on-scroll reveal-fade-down" aria-hidden="true">
         <svg viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="botanical-sprig-svg">
           <path d="M10 20C40 18 60 20 80 20C100 20 120 18 150 20" stroke="#B89047" strokeWidth="0.8" strokeDasharray="2 3" opacity="0.6" />
           <path d="M80 5C78 12 75 16 70 20C75 24 78 28 80 35C82 28 85 24 90 20C85 16 82 12 80 5Z" fill="#B89047" opacity="0.45" />
@@ -19,12 +17,12 @@ export default function HeaderHero({ onScrollToSection }) {
 
       <div className="editorial-hero-inner">
         {/* Frase poética superior delicada */}
-        <span className="editorial-intro-script font-script">
+        <span className="editorial-intro-script font-script reveal-on-scroll reveal-fade-down reveal-delay-100">
           Nos Casamos
         </span>
 
         {/* Foto de portada con marco en arco sutil estilo papel rasgado */}
-        <div className="hero-arch-photo-wrap">
+        <div className="hero-arch-photo-wrap reveal-on-scroll reveal-scale reveal-delay-150">
           <div className="hero-arch-frame">
             <img
               src="/images/anillo-abrazo.jpg"
@@ -36,19 +34,19 @@ export default function HeaderHero({ onScrollToSection }) {
         </div>
 
         {/* Nombres con respiro amplio */}
-        <div className="editorial-names-wrap">
+        <div className="editorial-names-wrap reveal-on-scroll reveal-fade-up reveal-delay-250">
           <h1 className="hero-name font-serif">Junior</h1>
           <span className="hero-ampersand font-script">&</span>
           <h1 className="hero-name font-serif">Kathe</h1>
         </div>
 
         {/* Detalle de fecha y ciudad */}
-        <div className="editorial-meta-line">
+        <div className="editorial-meta-line reveal-on-scroll reveal-fade-up reveal-delay-350">
           <span className="meta-date font-serif">06 / Marzo / 2027</span>
         </div>
 
         {/* Flecha sutil para invitar a continuar */}
-        <div className="hero-scroll-cue">
+        <div className="hero-scroll-cue reveal-on-scroll reveal-fade-up reveal-delay-450">
           <button
             type="button"
             onClick={() => onScrollToSection('promesa')}
