@@ -70,11 +70,11 @@ body {
 
 @media (min-width: 540px) {
   .envelope-viewport-stage {
-    width: min(480px, 92vw);
-    height: min(90vh, 850px);
+    width: 100vw;
+    height: 100%;
     aspect-ratio: 768 / 1376;
-    border-radius: 12px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
@@ -268,8 +268,8 @@ body {
   top: 50.4%;
   left: 50.8%;
   transform: translate(-50%, -50%);
-  width: 136px;
-  height: 136px;
+  width: 152px;
+  height: 152px;
   background: transparent;
   border: none;
   padding: 0;
@@ -384,8 +384,8 @@ body {
 
 @media (max-width: 480px) {
   .interactive-wax-seal-btn {
-    width: 114px;
-    height: 114px;
+    width: 128px;
+    height: 128px;
   }
 
   .seal-touch-prompt-wrap {
