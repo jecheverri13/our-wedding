@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 
+// eslint-disable-next-line react/prop-types
 export default function EnvelopeScreen({ onOpenEnvelope }) {
   const [isOpening, setIsOpening] = useState(false);
 
   const handleOpen = (e) => {
     if (e) e.stopPropagation();
+    // Bloquear clics adicionales durante la animación
     if (isOpening) return;
     setIsOpening(true);
 
-    // Transición suave hacia los lados que revela directamente la pantalla principal
+    // Secuencia temporal coordinada con la apertura del sobre en el video (1.35s)
     setTimeout(() => {
       onOpenEnvelope();
-    }, 850);
+    }, 1350);
   };
 
   return (
@@ -21,44 +23,82 @@ export default function EnvelopeScreen({ onOpenEnvelope }) {
       role="region"
       aria-label="Invitación de boda de Junior y Kathe"
     >
-      {/* Escenario de pantalla completa para móvil y centrado en desktop */}
-      <div className={`envelope-viewport-stage ${isOpening ? 'stage-opening-sides' : ''}`}>
+      {/* Escenario del sobre: Pantalla completa en móvil y marco centrado en desktop */}
+      <div 
+        className={`envelope-viewport-stage ${isOpening ? 'stage-opening-active' : ''}`}
+        onClick={handleOpen}
+      >
         
-        {/* Panel Izquierdo que se abre hacia la izquierda */}
-        <div className={`env-gate-panel env-gate-left ${isOpening ? 'panel-slide-left' : ''}`}>
+        {/* TARJETA INTERIOR: Revelada armónicamente en el centro con zoom continuo */}
+        <div className={`env-card-reveal-preview ${isOpening ? 'card-zoom-in' : ''}`}>
+          <div className="env-card-paper">
+            <div className="env-card-botanical-accent" aria-hidden="true">
+              <svg viewBox="0 0 160 36" fill="none" className="env-card-sprig">
+                <path d="M10 18C40 16 60 18 80 18C100 18 120 16 150 18" stroke="#B89047" strokeWidth="0.8" strokeDasharray="2 3" opacity="0.6" />
+                <path d="M80 3C78 10 75 14 70 18C75 22 78 26 80 33C82 26 85 22 90 18C85 14 82 10 80 3Z" fill="#B89047" opacity="0.5" />
+                <circle cx="80" cy="18" r="2.5" fill="#A84C2D" opacity="0.7" />
+              </svg>
+            </div>
+            <span className="env-card-script font-script">Nos Casamos</span>
+            <h2 className="env-card-names font-serif">Junior &amp; Kathe</h2>
+            <div className="env-card-date font-serif">06 / MARZO / 2027</div>
+            <div className="env-card-divider"></div>
+            <p className="env-card-invitation font-serif">ESTÁS CORDIALMENTE INVITADO</p>
+          </div>
+        </div>
+
+        {/* SOLAPA SUPERIOR (Se repliega y asciende hacia arriba) */}
+        <div className={`env-flap-panel env-flap-top ${isOpening ? 'flap-open-top' : ''}`}>
           <img
             src="/images/sobre-terracota-limpio-hd.png"
-            alt="Sobre de boda terracota"
+            alt="Sobre terracota solapa superior"
             className="envelope-bg-image"
           />
         </div>
 
-        {/* Panel Derecho que se abre hacia la derecha */}
-        <div className={`env-gate-panel env-gate-right ${isOpening ? 'panel-slide-right' : ''}`}>
+        {/* SOLAPA INFERIOR (Se repliega y desciende hacia abajo) */}
+        <div className={`env-flap-panel env-flap-bottom ${isOpening ? 'flap-open-bottom' : ''}`}>
           <img
             src="/images/sobre-terracota-limpio-hd.png"
-            alt=""
+            alt="Sobre terracota solapa inferior"
             className="envelope-bg-image"
           />
         </div>
 
-        {/* Sello de cera dorado con bordes detallados (único, sin duplicados) */}
+        {/* SOLAPA IZQUIERDA (Se desplaza hacia la izquierda) */}
+        <div className={`env-flap-panel env-flap-left ${isOpening ? 'flap-open-left' : ''}`}>
+          <img
+            src="/images/sobre-terracota-limpio-hd.png"
+            alt="Sobre terracota solapa izquierda"
+            className="envelope-bg-image"
+          />
+        </div>
+
+        {/* SOLAPA DERECHA (Se desplaza hacia la derecha llevando el sello sobre ella) */}
+        <div className={`env-flap-panel env-flap-right ${isOpening ? 'flap-open-right' : ''}`}>
+          <img
+            src="/images/sobre-terracota-limpio-hd.png"
+            alt="Sobre terracota solapa derecha"
+            className="envelope-bg-image"
+          />
+        </div>
+
+        {/* SELLO DE CERA DORADO (Desplaza hacia la derecha sincronizado con la solapa derecha como en el video) */}
         <button
           type="button"
-          className={`interactive-wax-seal-btn ${isOpening ? 'seal-break-anim' : ''}`}
+          className={`interactive-wax-seal-btn ${isOpening ? 'seal-opening-anim' : ''}`}
           onClick={handleOpen}
           aria-label="Toca el sello para abrir la invitación"
         >
           <img
             src="/images/sello-dorado-detallado-jk.png"
-            alt="Sello de cera dorado detallado J&K"
+            alt="Sello de cera dorado J&K"
             className="seal-detailed-image"
           />
-          <div className="seal-pulse-ring"></div>
-          <div className="seal-glow-halo"></div>
+          <div className="seal-pulse-glow" aria-hidden="true"></div>
         </button>
 
-        {/* Indicador sutil para abrir */}
+        {/* INDICADOR SUTIL PARA ABRIR */}
         <div 
           className={`seal-touch-prompt-wrap ${isOpening ? 'prompt-fade-out' : ''}`}
           onClick={handleOpen}
