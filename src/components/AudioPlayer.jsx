@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { Volume2, VolumeX, Music } from 'lucide-react';
 
-const AudioPlayer = forwardRef(({ initialVolume = 0.3, ...props }, ref) => {
+const AudioPlayer = forwardRef(({ initialVolume = 0.1, ...props }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
@@ -34,7 +34,7 @@ const AudioPlayer = forwardRef(({ initialVolume = 0.3, ...props }, ref) => {
 
   const togglePlay = () => {
     if (!audioRef.current) return;
-    
+
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
