@@ -1,15 +1,22 @@
-import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { Volume2, VolumeX, Music } from 'lucide-react';
 
-const AudioPlayer = forwardRef((props, ref) => {
+const AudioPlayer = forwardRef(({ initialVolume = 0.3, ...props }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
   const musicUrl = "/audio/turning-page.mp3";
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = initialVolume;
+    }
+  }, [initialVolume]);
+
   useImperativeHandle(ref, () => ({
     playAudio: () => {
       if (audioRef.current && !isPlaying) {
+        audioRef.current.volume = initialVolume;
         audioRef.current.play().then(() => {
           setIsPlaying(true);
         }).catch((err) => {
@@ -32,6 +39,7 @@ const AudioPlayer = forwardRef((props, ref) => {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
+      audioRef.current.volume = initialVolume;
       audioRef.current.play().then(() => {
         setIsPlaying(true);
       }).catch((err) => {
