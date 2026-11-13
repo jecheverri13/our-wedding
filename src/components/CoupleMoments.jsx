@@ -13,16 +13,49 @@ export default function CoupleMoments() {
         <cite className="flow-eyebrow font-sans">— PROVERBIOS 4:23 —</cite>
       </div>
 
-      {/* Foto principal de compromiso con estilo fino posada sobre papel */}
+      {/* Foto principal de compromiso con estilo fino posada sobre papel y rodeada de eucaliptos sutiles */}
       <div className="artisan-couple-gallery">
         <div className="artisan-main-photo-wrap reveal-on-scroll reveal-scale reveal-delay-150">
-          <div className="artisan-main-frame">
+          <div className="artisan-photo-botanical-stage">
+            {/* Ramitas sutiles de eucalipto asomando por detrás del marco */}
             <img
-              src="/images/pareja-bn.jpg"
-              alt="Junior y Kathe"
-              className="artisan-main-img"
+              src="/images/eucalipto-rama-sutil.png"
+              alt=""
+              aria-hidden="true"
+              className="couple-botanical-sprig couple-sprig-top-left"
               loading="lazy"
             />
+            <img
+              src="/images/eucalipto-rama-sutil.png"
+              alt=""
+              aria-hidden="true"
+              className="couple-botanical-sprig couple-sprig-top-right"
+              loading="lazy"
+            />
+            <img
+              src="/images/eucalipto-rama-sutil.png"
+              alt=""
+              aria-hidden="true"
+              className="couple-botanical-sprig couple-sprig-bottom-left"
+              loading="lazy"
+            />
+            <img
+              src="/images/eucalipto-rama-sutil.png"
+              alt=""
+              aria-hidden="true"
+              className="couple-botanical-sprig couple-sprig-bottom-right"
+              loading="lazy"
+            />
+
+            {/* Marco polaroid artesanal con la foto */}
+            <div className="artisan-main-frame">
+              <img
+                src="/images/pareja-bn.jpg"
+                alt="Junior y Kathe"
+                className="artisan-main-img"
+                loading="lazy"
+              />
+            </div>
           </div>
           <div className="artisan-photo-subtext reveal-on-scroll reveal-fade-up reveal-delay-250">
             <span className="photo-title font-serif">Entendimos que no había mejor lugar para guardar nuestro corazón que en Dios. Cuando Él llena nuestra vida por completo, determina el rumbo de nuestro camino. Fue justamente guardar nuestro corazón en Él lo que nos reunió para hacer realidad su sueño en nosotros: la familia Echeverri Saldarriaga.</span>

@@ -5,29 +5,25 @@ export default function DressCode() {
     <section id="vestimenta" className="editorial-flow-section dresscode-flow">
       <div className="flow-header reveal-on-scroll reveal-fade-up">
         <span className="flow-eyebrow font-sans">CÓDIGO DE VESTIMENTA</span>
-        <h2 className="dresscode-heading font-serif">Traje Formal</h2>
+        <h2 className="dresscode-heading font-serif">Atuendo Formal</h2>
       </div>
 
       {/* Detalle elegante de Traje Formal */}
       <div className="dresscode-formal-container reveal-on-scroll reveal-scale reveal-delay-100">
-        <div className="formal-attire-spec-duo">
-          <div className="formal-spec-card">
-            <span className="formal-role-script font-script">Ellos</span>
-            <p className="formal-spec-text font-sans">TRAJE FORMAL OSCURO</p>
-          </div>
-
-          <span className="formal-spec-divider font-serif">✦</span>
-
-          <div className="formal-spec-card">
-            <span className="formal-role-script font-script">Ellas</span>
-            <p className="formal-spec-text font-sans">VESTIDO LARGO O MIDI</p>
-          </div>
+        {/* Ilustración artesanal en acuarela de los novios en atuendo formal */}
+        <div className="dresscode-couple-illustration-wrap">
+          <img
+            src="/images/novios-atuendo-formal.png?v=2"
+            alt="Ilustración de los novios en atuendo formal"
+            className="dresscode-couple-illustration"
+            loading="lazy"
+          />
         </div>
 
         {/* Reserva exclusiva de colores para los novios */}
         <div className="dresscode-reserved-card reveal-on-scroll reveal-fade-up reveal-delay-200">
-          <span className="reserved-eyebrow font-sans">RESERVA DE COLOR</span>
-          
+          <span className="reserved-eyebrow font-sans">LOS NOVIOS SE RESERVAN LOS COLORES:</span>
+
           <div className="reserved-swatches-row">
             <div className="reserved-color-pill">
               <span className="color-dot white-dot" aria-hidden="true"></span>
@@ -39,10 +35,6 @@ export default function DressCode() {
               <span className="color-label font-sans">Terracota</span>
             </div>
           </div>
-
-          <p className="dresscode-reserved-note font-serif">
-            «Con mucho amor, el color blanco y los tonos terracota quedan reservados exclusivamente para los novios 🤍»
-          </p>
         </div>
       </div>
 

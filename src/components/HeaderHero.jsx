@@ -21,8 +21,37 @@ export default function HeaderHero({ onScrollToSection }) {
           Nos Casamos
         </span>
 
-        {/* Foto de portada con marco en arco sutil estilo papel rasgado */}
+        {/* Foto de portada con marco en arco sutil estilo papel rasgado y eucaliptos sutiles */}
         <div className="hero-arch-photo-wrap reveal-on-scroll reveal-scale reveal-delay-150">
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            aria-hidden="true"
+            className="hero-botanical-sprig hero-sprig-top-left"
+            loading="lazy"
+          />
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            aria-hidden="true"
+            className="hero-botanical-sprig hero-sprig-top-right"
+            loading="lazy"
+          />
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            aria-hidden="true"
+            className="hero-botanical-sprig hero-sprig-bottom-left"
+            loading="lazy"
+          />
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            aria-hidden="true"
+            className="hero-botanical-sprig hero-sprig-bottom-right"
+            loading="lazy"
+          />
+
           <div className="hero-arch-frame">
             <img
               src="/images/anillo-abrazo.jpg"

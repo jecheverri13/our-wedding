@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 
 export default function Countdown() {
-  const targetDate = new Date('2027-03-06T16:00:00-05:00').getTime();
+  const targetDate = new Date('2027-03-06T15:30:00-05:00').getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -49,15 +49,53 @@ export default function Countdown() {
     <section className="editorial-flow-section countdown-flow">
       <div className="flow-header reveal-on-scroll reveal-fade-up">
         <span className="flow-eyebrow font-sans">Guarda la fecha</span>
-        <br />
-        <p className="countdown-heading font-serif">
-          Sábado 6 de Marzo de 2027
-        </p>
-        <p className="countdown-heading font-serif">
-          4:00 p.m.
-        </p>
+      </div>
 
-        <br />
+      {/* Franja de papel rasgado terracota para la fecha que cubre el ancho de la página */}
+      <div className="torn-date-banner-wrap reveal-on-scroll reveal-fade-up">
+        {/* Eucaliptos sutiles solo en los bordes de la franja */}
+        <div className="torn-date-botanicals-wrap" aria-hidden="true">
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            className="torn-date-botanical-sprig sprig-top-left"
+          />
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            className="torn-date-botanical-sprig sprig-top-right"
+          />
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            className="torn-date-botanical-sprig sprig-bottom-left"
+          />
+          <img
+            src="/images/eucalipto-rama-sutil.png"
+            alt=""
+            className="torn-date-botanical-sprig sprig-bottom-right"
+          />
+        </div>
+
+        <div className="torn-date-banner">
+          <img
+            src="/images/franja-terracota-rasgada.png"
+            alt=""
+            className="torn-date-banner-bg"
+            aria-hidden="true"
+          />
+          <div className="torn-date-banner-content">
+            <p className="countdown-heading countdown-date font-serif">
+              Sábado 6 de Marzo de 2027
+            </p>
+            <p className="countdown-heading countdown-time font-serif">
+              3:30 p.m.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="countdown-prompt-wrap reveal-on-scroll reveal-fade-up">
         <h2 className="event-date-highlight font-serif">Cada vez falta menos...</h2>
       </div>
 

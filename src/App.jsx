@@ -10,6 +10,7 @@ import GiftSection from './components/GiftSection';
 import RsvpSection from './components/RsvpSection';
 import AudioPlayer from './components/AudioPlayer';
 import Footer from './components/Footer';
+import MiniSpiderman from './components/MiniSpiderman';
 import useScrollReveal from './hooks/useScrollReveal';
 import './App.css';
 
@@ -98,6 +99,9 @@ export default function App() {
           {/* 9. Cierre / Pie de Página */}
           <Footer />
         </main>
+
+        {/* Mini Spider-Man curioso que se asoma aleatoriamente */}
+        <MiniSpiderman isActive={isEnvelopeOpen} />
 
         {/* Reproductor de Audio Flotante Circular */}
         <AudioPlayer ref={audioPlayerRef} />

@@ -182,8 +182,8 @@ body {
   overflow: hidden;
   will-change: clip-path, transform, filter;
   transition: clip-path 1.35s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 1.35s ease;
+    transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.35s ease;
   pointer-events: none;
   z-index: 3;
 }
@@ -316,10 +316,13 @@ body {
 }
 
 @keyframes sealSoftGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(0.95);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.08);
@@ -400,6 +403,7 @@ body {
 
 /* Soporte para accesibilidad y prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   .fullscreen-envelope-container,
   .fullscreen-envelope-container.envelope-opening-active,
   .env-flap-panel,
@@ -421,6 +425,14 @@ body {
   .interactive-wax-seal-btn.seal-opening-anim {
     transform: none !important;
     opacity: 0 !important;
+  }
+
+  .terracotta-envelope-wrap,
+  .terracotta-realistic-envelope,
+  .gifts-white-paper,
+  .envelope-wax-seal {
+    transition: none !important;
+    transform: none !important;
   }
 }
 
@@ -554,7 +566,43 @@ body {
   position: relative;
 }
 
+.hero-botanical-sprig {
+  position: absolute;
+  z-index: 0;
+  width: clamp(78px, 24%, 98px);
+  height: auto;
+  opacity: 0.84;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-sprig-top-left {
+  top: 26px;
+  left: -14px;
+  transform: scaleX(-1) rotate(22deg);
+}
+
+.hero-sprig-top-right {
+  top: 26px;
+  right: -14px;
+  transform: rotate(-22deg);
+}
+
+.hero-sprig-bottom-left {
+  bottom: -14px;
+  left: -22px;
+  transform: scaleX(-1) rotate(-16deg);
+}
+
+.hero-sprig-bottom-right {
+  bottom: -14px;
+  right: -22px;
+  transform: rotate(16deg);
+}
+
 .hero-arch-frame {
+  position: relative;
+  z-index: 1;
   width: 100%;
   padding: 5px;
   background: #FAF7F2;
@@ -564,7 +612,6 @@ body {
     0 3px 10px rgba(109, 45, 22, 0.06),
     0 16px 36px rgba(109, 45, 22, 0.1),
     inset 0 0 0 1px rgba(255, 255, 255, 0.7);
-  position: relative;
   overflow: hidden;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -694,7 +741,7 @@ body {
 
 .flow-eyebrow {
   display: block;
-  font-size: clamp(0.78rem, 2.6vw, 0.9rem);
+  font-size: clamp(0.92rem, 3vw, 1.08rem);
   letter-spacing: 0.28em;
   color: var(--color-terracotta);
   font-weight: 600;
@@ -703,7 +750,7 @@ body {
 }
 
 .flow-heading {
-  font-size: clamp(1.8rem, 5.5vw, 2.4rem);
+  font-size: clamp(2.1rem, 6.2vw, 2.75rem);
   font-weight: 400;
   color: var(--color-terracotta-dark);
   line-height: 1.25;
@@ -817,7 +864,15 @@ body {
   align-items: center;
 }
 
+.artisan-photo-botanical-stage {
+  position: relative;
+  width: 100%;
+  margin: 0.9rem auto 0.7rem;
+}
+
 .artisan-main-frame {
+  position: relative;
+  z-index: 1;
   width: 100%;
   aspect-ratio: 4 / 5;
   background: #FFFDF9;
@@ -825,6 +880,40 @@ body {
   border-radius: 4px;
   border: 1px solid var(--color-paper-border);
   box-shadow: var(--shadow-photo);
+}
+
+.couple-botanical-sprig {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  height: auto;
+  z-index: 0;
+  width: clamp(78px, 24%, 98px);
+  opacity: 0.84;
+}
+
+.couple-sprig-top-left {
+  top: -16px;
+  left: -22px;
+  transform: scaleX(-1) rotate(18deg);
+}
+
+.couple-sprig-top-right {
+  top: -16px;
+  right: -22px;
+  transform: rotate(-18deg);
+}
+
+.couple-sprig-bottom-left {
+  bottom: -14px;
+  left: -22px;
+  transform: scaleX(-1) rotate(-16deg);
+}
+
+.couple-sprig-bottom-right {
+  bottom: -14px;
+  right: -22px;
+  transform: rotate(16deg);
 }
 
 .artisan-main-img {
@@ -858,8 +947,25 @@ body {
    5. LUGAR & CELEBRACIÓN (ESTILO REEL CON FOTO ARTÍSTICA)
    ======================================================== */
 
+.event-cross-emblem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.45rem auto 0.55rem;
+}
+
+.event-cross-img {
+  width: 76px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(109, 45, 22, 0.08));
+  pointer-events: none;
+  user-select: none;
+}
+
 .event-venue-heading {
-  font-size: clamp(2.3rem, 6.5vw, 3.1rem);
+  font-size: clamp(2.5rem, 7vw, 3.35rem);
   font-weight: 400;
   color: var(--color-terracotta-dark);
   line-height: 1.1;
@@ -903,7 +1009,7 @@ body {
 }
 
 .event-date-highlight {
-  font-size: clamp(1.35rem, 4.2vw, 1.7rem);
+  font-size: clamp(1.6rem, 4.8vw, 2rem);
   font-weight: 500;
   color: var(--color-terracotta-dark);
 }
@@ -974,7 +1080,7 @@ body {
 
 .itinerary-eyebrow {
   display: block;
-  font-size: clamp(0.78rem, 2.5vw, 0.9rem);
+  font-size: clamp(0.92rem, 3vw, 1.08rem);
   letter-spacing: 0.32em;
   color: var(--color-terracotta);
   font-weight: 600;
@@ -1051,11 +1157,134 @@ body {
    6. CUENTA REGRESIVA (ETÉREA SOBRE PAPEL)
    ======================================================== */
 
+.countdown-flow {
+  overflow-x: clip;
+}
+
+.torn-date-banner-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.6rem -1.4rem 1.8rem;
+  width: calc(100% + 2.8rem);
+  padding: 0;
+}
+
+/* Follaje de eucaliptos sutiles solo en los bordes */
+.torn-date-botanicals-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.torn-date-botanical-sprig {
+  position: absolute;
+  height: auto;
+  opacity: 0.88;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sprig-top-left {
+  top: -24px;
+  left: 12px;
+  width: clamp(80px, 18%, 115px);
+  transform: rotate(18deg);
+}
+
+.sprig-top-right {
+  top: -24px;
+  right: 12px;
+  width: clamp(80px, 18%, 115px);
+  transform: scaleX(-1) rotate(-18deg);
+}
+
+.sprig-bottom-left {
+  bottom: -26px;
+  left: 12px;
+  width: clamp(80px, 18%, 115px);
+  transform: rotate(-22deg);
+}
+
+.sprig-bottom-right {
+  bottom: -26px;
+  right: 12px;
+  width: clamp(80px, 18%, 115px);
+  transform: scaleX(-1) rotate(22deg);
+}
+
+.torn-date-banner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-height: 165px;
+  /* Mayor altura solicitada */
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.torn-date-banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(45, 18, 8, 0.16));
+  user-select: none;
+}
+
+.torn-date-banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 2.2rem 1.6rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.countdown-prompt-wrap {
+  margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
 .countdown-heading {
-  font-size: clamp(2rem, 5.5vw, 2.6rem);
+  font-size: clamp(2.25rem, 6.2vw, 2.9rem);
   font-weight: 400;
   color: var(--color-terracotta-dark);
   font-style: italic;
+}
+
+.countdown-heading.countdown-date,
+.countdown-heading.countdown-time {
+  font-size: clamp(1.85rem, 5.5vw, 2.55rem);
+  font-weight: 500;
+  color: #FFFDF9;
+  /* Blanco cálido luminoso de alto contraste */
+  font-style: italic;
+  letter-spacing: 0.02em;
+  line-height: 1.22;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(35, 12, 5, 0.52), 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.countdown-heading.countdown-time {
+  margin-top: 0.25rem;
 }
 
 .artisan-countdown-grid {
@@ -1106,7 +1335,7 @@ body {
    ======================================================== */
 
 .dresscode-heading {
-  font-size: clamp(2rem, 5.5vw, 2.6rem);
+  font-size: clamp(2.25rem, 6.2vw, 2.9rem);
   font-weight: 400;
   color: var(--color-terracotta-dark);
   font-style: italic;
@@ -1114,11 +1343,30 @@ body {
 
 .dresscode-formal-container {
   max-width: 420px;
-  margin: 1.5rem auto 0;
+  margin: 0.9rem auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.25rem;
+}
+
+.dresscode-couple-illustration-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0.1rem auto 0.2rem;
+}
+
+.dresscode-couple-illustration {
+  width: clamp(205px, 56vw, 250px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(109, 45, 22, 0.08));
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.4s ease;
 }
 
 .formal-attire-spec-duo {
@@ -1239,40 +1487,218 @@ body {
 }
 
 /* ========================================================
-   8. LLUVIA DE SOBRES
+   8. LLUVIA DE SOBRES / MUESTRA DE CARIÑO
    ======================================================== */
 
+.gifts-flow {
+  position: relative;
+  width: 100%;
+}
+
 .gifts-heading {
-  font-size: clamp(2rem, 5.5vw, 2.6rem);
+  font-size: clamp(2.25rem, 6.2vw, 2.9rem);
   font-weight: 400;
   color: var(--color-terracotta-dark);
   font-style: italic;
+  margin-top: 0.2rem;
 }
 
-.gifts-artisan-body {
-  max-width: 400px;
-  margin: 1.4rem auto 0;
-  text-align: center;
+/* Escenario del sobre terracota con carta de papel blanco y flores */
+.gifts-envelope-scene {
+  width: 100%;
+  max-width: 480px;
+  margin: 1.8rem auto 1rem;
+  padding: 2.2rem 0.5rem 1.6rem;
+  position: relative;
+  box-sizing: border-box;
 }
 
-.gifts-envelope-symbol {
-  font-size: 2.5rem;
+.terracotta-realistic-envelope {
+  position: relative;
+  width: 100%;
+  padding-top: 85px;
+  padding-bottom: 18px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* 1. Follaje botánico de acuarela en el fondo (referencia exacta) */
+.envelope-botanical-bg {
+  position: absolute;
+  inset: -32px -28px -36px -28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.botanical-foliage-top {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  max-width: 520px;
+  height: auto;
   display: block;
-  margin-bottom: 0.6rem;
+  opacity: 0.95;
+  mix-blend-mode: multiply;
 }
 
-.gifts-lead {
-  font-size: clamp(1.25rem, 3.8vw, 1.45rem);
+.botanical-foliage-bottom {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  opacity: 0.95;
+  mix-blend-mode: multiply;
+}
+
+/* 2. Respaldo y solapa superior abierta del sobre terracota rugoso */
+.envelope-realistic-back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.envelope-back-hd-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* 3. Tarjeta de papel blanco artesanal con el mensaje */
+.gifts-white-paper {
+  position: relative;
+  z-index: 2;
+  width: 82%;
+  max-width: 365px;
+  margin: 0 auto;
+  background-color: #FFFDF9;
+  background-image:
+    linear-gradient(rgba(255, 253, 249, 0.9), rgba(250, 246, 238, 0.93)),
+    url("/images/papel-artesanal-textura.jpg");
+  background-repeat: repeat;
+  background-size: cover, 260px 260px;
+  border-radius: 6px 6px 0 0;
+  border: 1px solid rgba(184, 150, 120, 0.35);
+  border-bottom: none;
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 4px rgba(184, 144, 71, 0.24),
+    0 14px 34px rgba(45, 16, 8, 0.18);
+  padding: 1.8rem 1.5rem 6.8rem;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  will-change: transform;
+  box-sizing: border-box;
+}
+
+/* Elevación suave al interactuar / hover */
+.terracotta-realistic-envelope:hover .gifts-white-paper {
+  transform: translateY(-8px);
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 4px rgba(184, 144, 71, 0.28),
+    0 22px 44px rgba(45, 16, 8, 0.24);
+}
+
+.paper-botanical-accent {
+  width: 120px;
+  margin: 0 auto 0.75rem;
+  opacity: 0.9;
+}
+
+.paper-sprig-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gifts-card-lead {
+  font-size: clamp(1.12rem, 3.4vw, 1.3rem);
   font-style: italic;
   color: var(--color-terracotta-dark);
-  line-height: 1.6;
-  margin-bottom: 0.8rem;
+  line-height: 1.55;
+  margin-bottom: 0.65rem;
 }
 
-.gifts-subtext {
-  font-size: 1.02rem;
-  color: var(--color-text-light);
+.gifts-card-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.6rem auto 0.75rem;
+  max-width: 130px;
+}
+
+.card-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 144, 71, 0.5), transparent);
+}
+
+.card-divider-symbol {
+  font-size: 0.72rem;
+  color: var(--color-gold);
+  opacity: 0.8;
+}
+
+.gifts-card-subtext {
+  font-size: clamp(0.86rem, 2.4vw, 0.96rem);
+  color: #4E3C33;
   line-height: 1.6;
+  font-weight: 400;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+/* 4. Bolsillo frontal del sobre terracota con pliegues realistas */
+.envelope-realistic-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 148px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.envelope-front-hd-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* Sello de cera dorado sobre el vértice central del sobre */
+.envelope-wax-seal {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  z-index: 4;
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.seal-pocket-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(35, 12, 6, 0.48));
+}
+
+.envelope-wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 /* ========================================================
@@ -1280,7 +1706,7 @@ body {
    ======================================================== */
 
 .rsvp-heading {
-  font-size: clamp(2.2rem, 6vw, 2.8rem);
+  font-size: clamp(2.4rem, 6.5vw, 3.1rem);
   font-weight: 400;
   color: var(--color-terracotta-dark);
   font-style: italic;
@@ -1534,6 +1960,7 @@ body {
    ======================================================== */
 
 @media (max-width: 640px) {
+
   /* Folio de papel en móvil */
   .wedding-paper-sheet {
     max-width: 100vw;
@@ -1595,7 +2022,7 @@ body {
   }
 
   .flow-eyebrow {
-    font-size: 0.65rem;
+    font-size: 0.82rem;
     letter-spacing: 0.2em;
     margin-bottom: 0.15rem;
   }
@@ -1615,6 +2042,30 @@ body {
   .hero-arch-photo-wrap {
     max-width: 255px;
     margin: 0.4rem auto 0.95rem;
+  }
+
+  .hero-botanical-sprig {
+    width: 70px;
+  }
+
+  .hero-sprig-top-left {
+    top: 22px;
+    left: -10px;
+  }
+
+  .hero-sprig-top-right {
+    top: 22px;
+    right: -10px;
+  }
+
+  .hero-sprig-bottom-left {
+    bottom: -10px;
+    left: -16px;
+  }
+
+  .hero-sprig-bottom-right {
+    bottom: -10px;
+    right: -16px;
   }
 
   .hero-arch-frame {
@@ -1678,6 +2129,34 @@ body {
     max-width: 255px;
   }
 
+  .artisan-photo-botanical-stage {
+    margin: 0.65rem auto 0.5rem;
+  }
+
+  .couple-botanical-sprig {
+    width: 70px;
+  }
+
+  .couple-sprig-top-left {
+    top: -12px;
+    left: -16px;
+  }
+
+  .couple-sprig-top-right {
+    top: -12px;
+    right: -16px;
+  }
+
+  .couple-sprig-bottom-left {
+    bottom: -10px;
+    left: -16px;
+  }
+
+  .couple-sprig-bottom-right {
+    bottom: -10px;
+    right: -16px;
+  }
+
   .artisan-main-frame {
     padding: 6px 6px 14px;
     border-radius: 6px;
@@ -1727,16 +2206,71 @@ body {
 
   /* 4. CUENTA REGRESIVA */
   .countdown-flow .flow-header {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .torn-date-banner-wrap {
+    margin: 1.2rem -1rem 1.4rem;
+    width: calc(100% + 2rem);
+    padding: 0;
+  }
+
+  .sprig-top-left {
+    top: -18px;
+    left: 6px;
+    width: 72px;
+  }
+
+  .sprig-top-right {
+    top: -18px;
+    right: 6px;
+    width: 72px;
+  }
+
+  .sprig-bottom-left {
+    bottom: -20px;
+    left: 6px;
+    width: 72px;
+  }
+
+  .sprig-bottom-right {
+    bottom: -20px;
+    right: 6px;
+    width: 72px;
+  }
+
+  .torn-date-banner {
+    max-width: 100%;
+    min-height: 140px;
+    /* Más height en móvil */
+  }
+
+  .torn-date-banner-content {
+    padding: 1.7rem 0.8rem 1.8rem;
+  }
+
+  .countdown-prompt-wrap {
+    margin-top: 0.4rem;
+    margin-bottom: 0.3rem;
   }
 
   .countdown-heading {
-    font-size: 1.35rem;
-    line-height: 1.3;
+    font-size: 1.65rem;
+    line-height: 1.25;
+  }
+
+  .countdown-heading.countdown-date,
+  .countdown-heading.countdown-time {
+    font-size: clamp(1.55rem, 5.8vw, 1.85rem);
+    line-height: 1.22;
+  }
+
+  .countdown-heading.countdown-time {
+    margin-top: 0.2rem;
   }
 
   .event-date-highlight {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-top: 0.25rem;
   }
 
@@ -1778,8 +2312,16 @@ body {
     margin-bottom: 0.35rem;
   }
 
+  .event-cross-emblem {
+    margin: 0.3rem auto 0.4rem;
+  }
+
+  .event-cross-img {
+    width: 64px;
+  }
+
   .event-venue-heading {
-    font-size: 1.75rem;
+    font-size: 2.05rem;
     line-height: 1.2;
   }
 
@@ -1809,7 +2351,7 @@ body {
   }
 
   .itinerary-eyebrow {
-    font-size: 0.76rem;
+    font-size: 0.88rem;
     margin-bottom: 0.45rem;
   }
 
@@ -1849,7 +2391,7 @@ body {
 
   /* 6. CÓDIGO DE VESTIMENTA */
   .dresscode-heading {
-    font-size: 1.85rem;
+    font-size: 2.15rem;
   }
 
   .dresscode-formal-container {
@@ -1907,29 +2449,67 @@ body {
 
   /* 7. LLUVIA DE SOBRES */
   .gifts-heading {
-    font-size: 1.85rem;
+    font-size: 2.15rem;
   }
 
-  .gifts-envelope-symbol {
-    font-size: 2.3rem;
-    margin-bottom: 0.35rem;
+  .gifts-envelope-scene {
+    max-width: 400px;
+    margin: 1.4rem auto 0.6rem;
+    padding: 1.8rem 0.25rem 1rem;
   }
 
-  .gifts-lead {
-    font-size: 1.25rem;
-    line-height: 1.42;
+  .terracotta-realistic-envelope {
+    padding-top: 72px;
+    padding-bottom: 12px;
   }
 
-  .gifts-subtext {
-    font-size: 0.95rem;
-    line-height: 1.45;
-    max-width: 330px;
-    margin: 0.45rem auto 0;
+  .envelope-botanical-bg {
+    inset: -22px -18px -24px -18px;
+  }
+
+  .botanical-foliage-top {
+    top: -16px;
+    width: 114%;
+  }
+
+  .botanical-foliage-bottom {
+    bottom: -22px;
+    width: 114%;
+  }
+
+  .gifts-white-paper {
+    width: 83%;
+    padding: 1.5rem 1.15rem 5.8rem;
+  }
+
+  .terracotta-realistic-envelope:hover .gifts-white-paper {
+    transform: translateY(-5px);
+  }
+
+  .gifts-card-lead {
+    font-size: 1.14rem;
+    line-height: 1.48;
+    margin-bottom: 0.5rem;
+  }
+
+  .gifts-card-subtext {
+    font-size: 0.88rem;
+    line-height: 1.52;
+    max-width: 295px;
+  }
+
+  .envelope-realistic-front {
+    height: 126px;
+  }
+
+  .envelope-wax-seal {
+    width: 48px;
+    height: 48px;
   }
 
   /* 8. CONFIRMACIÓN RSVP */
   .rsvp-heading {
-    font-size: 1.85rem;
+    font-size: 2.15rem;
   }
 
   .rsvp-sub-lead {
@@ -2000,5 +2580,385 @@ body {
   .btn-scroll-top {
     font-size: 0.72rem;
     padding: 0.45rem 1rem;
+  }
+}
+
+/* ========================================================
+   10. MINI SPIDER-MAN PEEKING EASTER EGG (ALEATORIO Y NATURAL)
+   ======================================================== */
+
+.mini-spidey-viewport {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100vw, 600px);
+  pointer-events: none;
+  z-index: 96;
+  overflow: hidden;
+}
+
+.mini-spidey-stage {
+  position: absolute;
+  width: 48px;
+  height: 62px;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mini-spidey-stage.mode-left {
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.mini-spidey-stage.mode-right {
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.mini-spidey-stage.mode-top {
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.mini-spidey-mover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.mini-spidey-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Hilo de telaraña conectado a los pies cuando baja desde el techo */
+.spidey-web-thread {
+  position: absolute;
+  bottom: calc(100% - 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.6px;
+  height: 140px;
+  background: linear-gradient(to bottom,
+      rgba(250, 250, 250, 0.98),
+      rgba(220, 220, 220, 0.92) 60%,
+      rgba(190, 190, 190, 0.98));
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  border-radius: 999px;
+}
+
+/* Destello de sentido arácnido */
+.spidey-sense-tingle {
+  position: absolute;
+  width: 58px;
+  height: 29px;
+  left: 50%;
+  top: -11px;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  animation: spideySenseFlash 5.6s ease-in-out forwards;
+}
+
+.mode-top .mini-spidey-svg {
+  transform: rotate(180deg);
+}
+
+.mode-top .spidey-sense-tingle {
+  top: auto;
+  bottom: -12px;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+/* Animaciones principales de asomarse y esconderse por lado */
+.mode-left .mini-spidey-mover {
+  animation: spideyPeekLeft 5.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mode-right .mini-spidey-mover {
+  animation: spideyPeekRight 5.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mode-top .mini-spidey-mover {
+  transform-origin: 50% -90px;
+  animation: spideyPeekTop 5.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Movimiento curioso de la cabecita y expresión de los ojos */
+.spidey-head-group {
+  transform-origin: 60px 82px;
+  animation: spideyHeadCuriosity 5.6s ease-in-out forwards;
+}
+
+.spidey-eye-lens {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: spideyEyeSquint 5.6s ease-in-out forwards;
+}
+
+/* Reacción rápida si el usuario lo toca (se asusta y se esconde) */
+.mini-spidey-stage.is-scared .spidey-sense-tingle {
+  animation: spideyScaredTingle 0.5s ease-out forwards !important;
+}
+
+.mini-spidey-stage.mode-left.is-scared .mini-spidey-mover {
+  animation: spideyHideQuickLeft 0.5s cubic-bezier(0.55, 0.08, 0.68, 0.53) forwards !important;
+}
+
+.mini-spidey-stage.mode-right.is-scared .mini-spidey-mover {
+  animation: spideyHideQuickRight 0.5s cubic-bezier(0.55, 0.08, 0.68, 0.53) forwards !important;
+}
+
+.mini-spidey-stage.mode-top.is-scared .mini-spidey-mover {
+  animation: spideyHideQuickTop 0.5s cubic-bezier(0.55, 0.08, 0.68, 0.53) forwards !important;
+}
+
+/* KEYFRAMES: Asomarse desde la izquierda (primero tímido, luego curioso, luego se esconde) */
+@keyframes spideyPeekLeft {
+  0% {
+    transform: translateX(-115%) rotate(82deg);
+  }
+
+  13% {
+    transform: translateX(-50%) rotate(86deg);
+  }
+
+  20% {
+    transform: translateX(-55%) rotate(83deg);
+  }
+
+  33% {
+    transform: translateX(-14%) rotate(94deg);
+  }
+
+  48% {
+    transform: translateX(-18%) rotate(88deg);
+  }
+
+  64% {
+    transform: translateX(-13%) rotate(96deg);
+  }
+
+  78% {
+    transform: translateX(-17%) rotate(90deg);
+  }
+
+  85% {
+    transform: translateX(-9%) rotate(98deg);
+  }
+
+  100% {
+    transform: translateX(-118%) rotate(78deg);
+  }
+}
+
+/* KEYFRAMES: Asomarse desde la derecha */
+@keyframes spideyPeekRight {
+  0% {
+    transform: translateX(115%) rotate(-82deg);
+  }
+
+  13% {
+    transform: translateX(50%) rotate(-86deg);
+  }
+
+  20% {
+    transform: translateX(55%) rotate(-83deg);
+  }
+
+  33% {
+    transform: translateX(14%) rotate(-94deg);
+  }
+
+  48% {
+    transform: translateX(18%) rotate(-88deg);
+  }
+
+  64% {
+    transform: translateX(13%) rotate(-96deg);
+  }
+
+  78% {
+    transform: translateX(17%) rotate(-90deg);
+  }
+
+  85% {
+    transform: translateX(9%) rotate(-98deg);
+  }
+
+  100% {
+    transform: translateX(118%) rotate(-78deg);
+  }
+}
+
+/* KEYFRAMES: Descolgarse de cabeza en telaraña desde arriba (mostrando los pies y botas) y volver a subir */
+@keyframes spideyPeekTop {
+  0% {
+    transform: translateY(-130%) rotate(0deg);
+  }
+
+  16% {
+    transform: translateY(12px) rotate(3deg);
+  }
+
+  23% {
+    transform: translateY(4px) rotate(-2deg);
+  }
+
+  36% {
+    transform: translateY(72px) rotate(-4deg);
+  }
+
+  52% {
+    transform: translateY(64px) rotate(4deg);
+  }
+
+  68% {
+    transform: translateY(70px) rotate(-3deg);
+  }
+
+  80% {
+    transform: translateY(62px) rotate(2deg);
+  }
+
+  86% {
+    transform: translateY(78px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-140%) rotate(0deg);
+  }
+}
+
+/* KEYFRAMES: Inclinación curiosa de la cabeza mientras mira */
+@keyframes spideyHeadCuriosity {
+
+  0%,
+  25% {
+    transform: rotate(0deg);
+  }
+
+  38% {
+    transform: rotate(-7deg);
+  }
+
+  56% {
+    transform: rotate(8deg);
+  }
+
+  72% {
+    transform: rotate(-5deg);
+  }
+
+  85%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* KEYFRAMES: Lentes blancos de los ojos entrecerrándose al estilo Spider-Man */
+@keyframes spideyEyeSquint {
+
+  0%,
+  30% {
+    transform: scaleY(1);
+  }
+
+  40%,
+  48% {
+    transform: scaleY(0.58);
+  }
+
+  55%,
+  64% {
+    transform: scaleY(1.06);
+  }
+
+  70%,
+  76% {
+    transform: scaleY(0.15);
+  }
+
+  80%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* KEYFRAMES: Destello sutil del sentido arácnido al terminar de asomarse */
+@keyframes spideySenseFlash {
+
+  0%,
+  31% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.75);
+  }
+
+  36%,
+  44% {
+    opacity: 0.95;
+    transform: translateX(-50%) scale(1.04);
+  }
+
+  52%,
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.85);
+  }
+}
+
+@keyframes spideyScaredTingle {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.18);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(1.35);
+  }
+}
+
+@keyframes spideyHideQuickLeft {
+  0% {
+    transform: translateX(-14%) rotate(94deg) scale(1.06);
+  }
+
+  100% {
+    transform: translateX(-120%) rotate(75deg) scale(0.9);
+  }
+}
+
+@keyframes spideyHideQuickRight {
+  0% {
+    transform: translateX(14%) rotate(-94deg) scale(1.06);
+  }
+
+  100% {
+    transform: translateX(120%) rotate(-75deg) scale(0.9);
+  }
+}
+
+@keyframes spideyHideQuickTop {
+  0% {
+    transform: translateY(68px) scale(1.06);
+  }
+
+  100% {
+    transform: translateY(-145%) scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .mini-spidey-stage {
+    width: 42px;
+    height: 54px;
   }
 }

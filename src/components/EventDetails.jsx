@@ -16,6 +16,14 @@ export default function EventDetails() {
     <section id="lugar" className="editorial-flow-section event-flow">
       <div className="flow-header reveal-on-scroll reveal-fade-up">
         <span className="flow-eyebrow font-sans">CEREMONIA Y RECEPCIÓN</span>
+        <div className="event-cross-emblem" aria-hidden="true">
+          <img
+            src="/images/cruz-flores-terracota.png"
+            alt="Cruz de madera con flores terracota en acuarela"
+            className="event-cross-img"
+            loading="lazy"
+          />
+        </div>
         <h2 className="event-venue-heading font-serif">El Refugio Casa de Eventos</h2>
       </div>
 
@@ -58,51 +66,6 @@ export default function EventDetails() {
       </div>
 
       <div className="flow-divider reveal-on-scroll reveal-fade-up reveal-delay-250">
-        <span className="flow-divider-symbol">✦</span>
-      </div>
-      {/* Itinerario Minimalista Vertical */}
-      <div className="editorial-itinerary-wrap">
-        <span className="itinerary-eyebrow font-sans reveal-on-scroll reveal-fade-up reveal-delay-100">ITINERARIO</span>
-        <div className="artisan-timeline">
-          <div className="timeline-node reveal-on-scroll reveal-fade-left reveal-delay-150">
-            <span className="node-time font-serif">4:00 PM</span>
-            <div className="node-bullet"></div>
-            <div className="node-content">
-              <h4 className="node-title font-serif">Ceremonia</h4>
-              <p className="node-desc font-sans">Bendición matrimonial</p>
-            </div>
-          </div>
-
-          <div className="timeline-node reveal-on-scroll reveal-fade-left reveal-delay-250">
-            <span className="node-time font-serif">5:30 PM</span>
-            <div className="node-bullet"></div>
-            <div className="node-content">
-              <h4 className="node-title font-serif">Brindis & Fotos</h4>
-              <p className="node-desc font-sans">Celebración al atardecer</p>
-            </div>
-          </div>
-
-          <div className="timeline-node reveal-on-scroll reveal-fade-left reveal-delay-350">
-            <span className="node-time font-serif">6:30 PM</span>
-            <div className="node-bullet"></div>
-            <div className="node-content">
-              <h4 className="node-title font-serif">Cena Especial</h4>
-              <p className="node-desc font-sans">Compartiendo juntos</p>
-            </div>
-          </div>
-
-          <div className="timeline-node reveal-on-scroll reveal-fade-left reveal-delay-450">
-            <span className="node-time font-serif">8:00 PM</span>
-            <div className="node-bullet"></div>
-            <div className="node-content">
-              <h4 className="node-title font-serif">A Divertirnos</h4>
-              <p className="node-desc font-sans">¡Volvamos a ser niños!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flow-divider reveal-on-scroll reveal-fade-up reveal-delay-500">
         <span className="flow-divider-symbol">✦</span>
       </div>
     </section>
