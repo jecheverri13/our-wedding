@@ -18,34 +18,6 @@ export default function CoupleMoments() {
         <div className="artisan-main-photo-wrap reveal-on-scroll reveal-scale reveal-delay-150">
           <div className="artisan-photo-botanical-stage">
             {/* Ramitas sutiles de eucalipto asomando por detrás del marco */}
-            <img
-              src="/images/eucalipto-rama-sutil.png"
-              alt=""
-              aria-hidden="true"
-              className="couple-botanical-sprig couple-sprig-top-left"
-              loading="lazy"
-            />
-            <img
-              src="/images/eucalipto-rama-sutil.png"
-              alt=""
-              aria-hidden="true"
-              className="couple-botanical-sprig couple-sprig-top-right"
-              loading="lazy"
-            />
-            <img
-              src="/images/eucalipto-rama-sutil.png"
-              alt=""
-              aria-hidden="true"
-              className="couple-botanical-sprig couple-sprig-bottom-left"
-              loading="lazy"
-            />
-            <img
-              src="/images/eucalipto-rama-sutil.png"
-              alt=""
-              aria-hidden="true"
-              className="couple-botanical-sprig couple-sprig-bottom-right"
-              loading="lazy"
-            />
 
             {/* Marco polaroid artesanal con la foto */}
             <div className="artisan-main-frame">

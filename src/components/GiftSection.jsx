@@ -69,7 +69,7 @@ export default function GiftSection() {
             </div>
 
             {/* Texto informativo de la lluvia de sobres */}
-            <p className="gifts-card-subtext font-sans">
+            <p className="gifts-card-subtext font-serif">
               Si deseas tener un detalle con nosotros para nuestro nuevo hogar, contaremos con un baúl especial de lluvia de sobres el día de la boda.
             </p>
           </article>

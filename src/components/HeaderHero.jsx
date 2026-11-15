@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 export default function HeaderHero({ onScrollToSection }) {
   return (
     <header className="editorial-hero-clean">
-      {/* Ramillete botánico sutil en acuarela */}
+      {/* Ramillete bot�nico sutil en acuarela */}
       <div className="botanical-header-accent reveal-on-scroll reveal-fade-down" aria-hidden="true">
         <svg viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="botanical-sprig-svg">
           <path d="M10 20C40 18 60 20 80 20C100 20 120 18 150 20" stroke="#B89047" strokeWidth="0.8" strokeDasharray="2 3" opacity="0.6" />
@@ -16,41 +16,13 @@ export default function HeaderHero({ onScrollToSection }) {
       </div>
 
       <div className="editorial-hero-inner">
-        {/* Frase poética superior delicada */}
+        {/* Frase po�tica superior delicada */}
         <span className="editorial-intro-script font-script reveal-on-scroll reveal-fade-down reveal-delay-100">
           Nos Casamos
         </span>
 
         {/* Foto de portada con marco en arco sutil estilo papel rasgado y eucaliptos sutiles */}
         <div className="hero-arch-photo-wrap reveal-on-scroll reveal-scale reveal-delay-150">
-          <img
-            src="/images/eucalipto-rama-sutil.png"
-            alt=""
-            aria-hidden="true"
-            className="hero-botanical-sprig hero-sprig-top-left"
-            loading="lazy"
-          />
-          <img
-            src="/images/eucalipto-rama-sutil.png"
-            alt=""
-            aria-hidden="true"
-            className="hero-botanical-sprig hero-sprig-top-right"
-            loading="lazy"
-          />
-          <img
-            src="/images/eucalipto-rama-sutil.png"
-            alt=""
-            aria-hidden="true"
-            className="hero-botanical-sprig hero-sprig-bottom-left"
-            loading="lazy"
-          />
-          <img
-            src="/images/eucalipto-rama-sutil.png"
-            alt=""
-            aria-hidden="true"
-            className="hero-botanical-sprig hero-sprig-bottom-right"
-            loading="lazy"
-          />
 
           <div className="hero-arch-frame">
             <img

@@ -15,22 +15,28 @@ import useScrollReveal from './hooks/useScrollReveal';
 import './App.css';
 
 export default function App() {
-  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false); // contenido revelado (t >= 4.3s)
+  const [isEnvelopeMounted, setIsEnvelopeMounted] = useState(true); // overlay de video montado
+  const [envelopeKey, setEnvelopeKey] = useState(0);
   const audioPlayerRef = useRef(null);
 
-  // Activa las animaciones de scroll al abrir el sobre
+  // Activa las animaciones de scroll al revelar el contenido
   useScrollReveal(isEnvelopeOpen);
 
-  const handleOpenEnvelope = () => {
-    setIsEnvelopeOpen(true);
-    // Iniciar reproducción de música al abrir el sobre si está disponible
+  // Al tocar el sello: iniciar música (requiere gesto del usuario)
+  const handleStartEnvelope = () => {
     if (audioPlayerRef.current) {
       audioPlayerRef.current.playAudio();
     }
   };
 
+  const handleRevealContent = () => setIsEnvelopeOpen(true);
+  const handleFinishEnvelope = () => setIsEnvelopeMounted(false);
+
   const handleReopenEnvelope = () => {
     setIsEnvelopeOpen(false);
+    setEnvelopeKey((k) => k + 1);
+    setIsEnvelopeMounted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Permitir que las animaciones vuelvan a reproducirse si se reabre el sobre
     document.querySelectorAll('.reveal-on-scroll.is-revealed').forEach((el) => {
@@ -48,12 +54,17 @@ export default function App() {
   return (
     <div className="wedding-app-root">
       {/* 1. SOBRE INICIAL INTERACTIVO */}
-      {!isEnvelopeOpen && (
-        <EnvelopeScreen onOpenEnvelope={handleOpenEnvelope} />
+      {isEnvelopeMounted && (
+        <EnvelopeScreen
+          key={envelopeKey}
+          onStart={handleStartEnvelope}
+          onReveal={handleRevealContent}
+          onFinish={handleFinishEnvelope}
+        />
       )}
 
       {/* CONTENIDO DE LA INVITACIÓN DESPLEGADA */}
-      <div className={`wedding-content-wrapper ${isEnvelopeOpen ? 'content-visible' : 'content-hidden'}`}>
+      <div className={`wedding-content-wrapper ${isEnvelopeOpen ? 'content-visible' : 'content-hidden'} ${isEnvelopeMounted ? 'content-over-video' : ''}`}>
         {/* Folio de Papel Artesanal Continuo (Estilo Carta / Reel) */}
         <main className="wedding-paper-sheet">
           {/* Barra superior discreta */}
@@ -100,6 +111,8 @@ export default function App() {
           <Footer />
         </main>
 
+        
+
         {/* Mini Spider-Man curioso que se asoma aleatoriamente */}
         <MiniSpiderman isActive={isEnvelopeOpen} />
 
@@ -109,4 +122,6 @@ export default function App() {
     </div>
   );
 }
+
+
 
