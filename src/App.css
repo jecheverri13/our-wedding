@@ -2636,7 +2636,7 @@ body {
   touch-action: manipulation;
   user-select: none;
   opacity: 1;
-  transition: opacity 800ms ease;
+  transition: opacity 1000ms ease;
 }
 
 .video-envelope-overlay.is-fading {

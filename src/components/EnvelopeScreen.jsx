@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 
-const REVEAL_TIME = 4.3; // el papel marfil ya cubre toda la pantalla
-const END_TIME = 6.2; // fin efectivo del video
-const FADE_MS = 800;
+const END_TIME = 6.2; // fin efectivo del video con el texto completo en pantalla
+const HOLD_MS = 1800; // pausa en el fotograma final para permitir leer el mensaje
+const FADE_MS = 1000; // duración del fundido suave hacia la invitación
 
 /* eslint-disable react/prop-types */
 export default function EnvelopeScreen({ onStart, onReveal, onFinish }) {
   const videoRef = useRef(null);
   const revealedRef = useRef(false);
+  const holdingRef = useRef(false);
   const finishingRef = useRef(false);
   const timersRef = useRef([]);
   const [started, setStarted] = useState(false);
@@ -29,12 +30,21 @@ export default function EnvelopeScreen({ onStart, onReveal, onFinish }) {
     onReveal?.();
   };
 
-  const finish = () => {
+  const startFadeOut = () => {
     if (finishingRef.current) return;
     finishingRef.current = true;
     reveal();
     setFading(true);
     timersRef.current.push(setTimeout(() => onFinish?.(), FADE_MS));
+  };
+
+  const completeVideoWithHold = () => {
+    if (holdingRef.current || finishingRef.current) return;
+    holdingRef.current = true;
+    if (videoRef.current && !videoRef.current.paused) {
+      videoRef.current.pause();
+    }
+    timersRef.current.push(setTimeout(startFadeOut, HOLD_MS));
   };
 
   const handleLoadedMetadata = () => {
@@ -50,13 +60,12 @@ export default function EnvelopeScreen({ onStart, onReveal, onFinish }) {
     setStarted(true);
     onStart?.();
     const p = v.play();
-    if (p && p.catch) p.catch(() => finish());
+    if (p && p.catch) p.catch(() => startFadeOut());
   };
 
   const handleTimeUpdate = () => {
     const t = videoRef.current?.currentTime ?? 0;
-    if (t >= REVEAL_TIME) reveal();
-    if (t >= END_TIME) finish();
+    if (t >= END_TIME) completeVideoWithHold();
   };
 
   return (
@@ -75,8 +84,8 @@ export default function EnvelopeScreen({ onStart, onReveal, onFinish }) {
           preload="auto"
           onLoadedMetadata={handleLoadedMetadata}
           onTimeUpdate={handleTimeUpdate}
-          onEnded={finish}
-          onError={finish}
+          onEnded={completeVideoWithHold}
+          onError={startFadeOut}
         />
 
         <button
