@@ -39,7 +39,7 @@ export default function Countdown() {
     const title = encodeURIComponent("Boda de Junior & Kathe 💍");
     const details = encodeURIComponent("¡Acompáñanos a celebrar nuestra unión matrimonial! Finca El Refugio, La Francia, Manizales.");
     const location = encodeURIComponent("Finca El Refugio, La Francia, Manizales, Caldas, Colombia");
-    const dates = "20270306T203000Z/20270306T203000Z";
+    const dates = "20270306T203000Z/20270307T030000Z";
 
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
     window.open(url, '_blank');
