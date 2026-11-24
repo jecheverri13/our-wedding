@@ -1000,82 +1000,7 @@ body {
   opacity: 0.7;
 }
 
-.dresscode-reserved-card {
-  width: 100%;
-  padding: 1.2rem 1.4rem;
-  background: rgba(250, 245, 240, 0.75);
-  border: 1px dashed rgba(168, 76, 45, 0.35);
-  border-radius: 12px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.reserved-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  color: var(--color-terracotta);
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-
-.reserved-swatches-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.reserved-color-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: #FFFDF9;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-paper-border);
-  box-shadow: 0 2px 8px rgba(109, 45, 22, 0.06);
-}
-
-.color-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  display: inline-block;
-}
-
-.color-dot.white-dot {
-  background: #FFFFFF;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-}
-
-.color-dot.terracotta-dot {
-  background: var(--color-terracotta);
-}
-
-.color-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--color-text-secondary);
-}
-
-.reserved-amp {
-  font-size: 1.2rem;
-  color: var(--color-gold);
-}
-
-.dresscode-reserved-note {
-  font-size: clamp(1.05rem, 3.2vw, 1.2rem);
-  color: var(--color-terracotta-dark);
-  font-style: italic;
-  line-height: 1.5;
-  margin: 0;
-}
+/* (Reserva de colores migrada a Tailwind CSS en DressCode.jsx) */
 
 /* ========================================================
    8. LLUVIA DE SOBRES / MUESTRA DE CARIÃ‘O
@@ -2056,39 +1981,6 @@ body {
   .formal-spec-text {
     font-size: 0.76rem;
     letter-spacing: 0.1em;
-  }
-
-  .dresscode-reserved-card {
-    padding: 0.9rem 1.1rem;
-  }
-
-  .reserved-eyebrow {
-    font-size: 0.72rem;
-    margin-bottom: 0.45rem;
-  }
-
-  .reserved-swatches-row {
-    gap: 0.7rem;
-    margin-bottom: 0.55rem;
-  }
-
-  .reserved-color-pill {
-    padding: 0.35rem 0.75rem;
-    gap: 0.45rem;
-  }
-
-  .color-dot {
-    width: 16px;
-    height: 16px;
-  }
-
-  .color-label {
-    font-size: 0.78rem;
-  }
-
-  .dresscode-reserved-note {
-    font-size: 0.98rem;
-    line-height: 1.45;
   }
 
   /* 7. LLUVIA DE SOBRES */
