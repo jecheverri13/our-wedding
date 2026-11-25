@@ -17,14 +17,9 @@ export default function HeaderHero({ onScrollToSection }) {
 
       <div className="editorial-hero-inner">
         {/* Frase po�tica superior delicada */}
-        <div className="editorial-intro-script reveal-on-scroll reveal-fade-down reveal-delay-100">
-          <img
-            src="/images/nos-casamos-title.png"
-            alt="Nos Casamos"
-            className="intro-script-img"
-            decoding="async"
-          />
-        </div>
+        <span className="editorial-intro-script font-script reveal-on-scroll reveal-fade-down reveal-delay-100">
+          Nos Casamos
+        </span>
 
         {/* Foto de portada con marco en arco sutil estilo papel rasgado y eucaliptos sutiles */}
         <div className="hero-arch-photo-wrap reveal-on-scroll reveal-scale reveal-delay-150">
