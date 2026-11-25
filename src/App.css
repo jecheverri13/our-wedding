@@ -92,12 +92,13 @@ body {
    ======================================================== */
 
 .editorial-hero-clean {
-  padding: 1.6rem 1.5rem 2.2rem;
+  padding: 1rem 1.5rem 1.4rem;
   text-align: center;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .btn-paper-reopen {
@@ -118,8 +119,8 @@ body {
 }
 
 .botanical-header-accent {
-  width: 140px;
-  margin: 0 auto 0.8rem;
+  width: 126px;
+  margin: 0 auto 0.45rem;
   opacity: 0.85;
 }
 
@@ -139,13 +140,14 @@ body {
 
 .editorial-intro-script {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(3.9rem, 10.5vw, 5.2rem);
+  font-size: clamp(3.5rem, 9.5vw, 4.65rem);
   font-weight: 400;
   color: #8C4A27;
-  line-height: 1.15;
-  margin-bottom: 0.85rem;
+  line-height: 1.12;
+  margin-bottom: 0.55rem;
   letter-spacing: 0.01em;
   word-spacing: 0.06em;
+  white-space: nowrap;
   display: block;
   padding: 0 0.25rem;
   text-shadow: 0 1px 1px rgba(109, 45, 22, 0.08);
@@ -154,9 +156,10 @@ body {
 
 /* Marco sutil en arco con bordes rústicos artesanales */
 .hero-arch-photo-wrap {
-  width: 100%;
+  width: min(335px, calc((100dvh - 340px) * 0.75));
+  min-width: 210px;
   max-width: 335px;
-  margin: 0.6rem auto 1.4rem;
+  margin: 0.35rem auto 1rem;
   display: flex;
   justify-content: center;
   position: relative;
@@ -1545,7 +1548,8 @@ body {
 
   /* Flujo continuo editorial elegante y compacto sin vacÃ­os forzados */
   .editorial-hero-clean {
-    padding: 0.8rem 1rem 1.2rem;
+    min-height: auto;
+    padding: 0.5rem 1rem 0.85rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1603,19 +1607,21 @@ body {
 
   /* 1. PORTADA HERO */
   .botanical-header-accent {
-    width: 110px;
-    margin: 0.2rem auto 0.4rem;
+    width: 104px;
+    margin: 0.1rem auto 0.25rem;
   }
 
   .editorial-intro-script {
-    font-size: clamp(3.2rem, 11.5vw, 3.8rem);
-    line-height: 1.15;
-    margin-bottom: 0.55rem;
+    font-size: clamp(2.85rem, 11vw, 3.45rem);
+    line-height: 1.1;
+    margin-bottom: 0.35rem;
   }
 
   .hero-arch-photo-wrap {
-    max-width: 255px;
-    margin: 0.4rem auto 0.95rem;
+    width: min(330px, 78vw, calc((100dvh - 315px) * 0.75));
+    min-width: 175px;
+    max-width: 330px;
+    margin: 0.25rem auto 0.75rem;
   }
 
   .hero-botanical-sprig {
@@ -1658,28 +1664,29 @@ body {
 
   .editorial-names-wrap {
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
   }
 
   .hero-name {
-    font-size: 2.75rem;
+    font-size: clamp(2.55rem, 9vw, 2.95rem);
   }
 
   .hero-ampersand {
-    font-size: 2.45rem;
+    font-size: clamp(2.25rem, 8vw, 2.6rem);
   }
 
   .editorial-meta-line {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.55rem;
   }
 
   .meta-date {
-    font-size: 1.4rem;
+    font-size: clamp(1.3rem, 4.8vw, 1.48rem);
     letter-spacing: 0.05em;
+    line-height: 1.25;
   }
 
   .hero-scroll-cue {
-    margin-top: 0.35rem;
+    margin-top: 0.2rem;
   }
 
   .cue-label {
