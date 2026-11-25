@@ -17,7 +17,7 @@ export default function HeaderHero({ onScrollToSection }) {
 
       <div className="editorial-hero-inner">
         {/* Frase po�tica superior delicada */}
-        <span className="editorial-intro-script font-script reveal-on-scroll reveal-fade-down reveal-delay-100">
+        <span className="editorial-intro-script reveal-on-scroll reveal-fade-down reveal-delay-100">
           Nos Casamos
         </span>
 
